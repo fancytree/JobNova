@@ -37,6 +37,7 @@ html, body {
     --text-secondary: #2A3A0A;
     --text-light: #4A5A1A;
     --text-default: #0E1401;
+    --text-white: #ffffff;
     
     /* 背景色 */
     --bg-primary: #ffffff;
@@ -75,6 +76,11 @@ html, body {
     --font-size-3xl: 1.875rem;
     --font-size-4xl: 2.25rem;
     --font-size-5xl: 3rem;
+    
+    /* 同心圆尺寸变量 */
+    --circle-1-size: 872px;
+    --circle-2-size: 732px;
+    --circle-3-size: 586px;
     
     /* 过渡 */
     --transition-fast: 0.15s ease;
@@ -160,10 +166,14 @@ body {
 
 /* Button Types */
 .btn-Primary {
-    background: var(--text-primary);
-    color: white;
-    transition: all var(--transition-normal);
-    height: 40px;
+    background: var(--text-default);
+    color: var(--text-white);
+    padding: 14px 20px;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.30px;
 }
 
 .btn-Primary:hover {
@@ -429,9 +439,15 @@ body {
     background-color: var(--nav-hover);
 }
 
-/* 滚动状态下移除导航按钮的hover边框 */
+/* 滚动状态下导航按钮的hover样式 */
+.navbar.scrolled .nav-buttons .btn {
+    /* 滚动状态下也只禁用transform，保持其他所有样式 */
+    transform: none !important;
+}
+
 .navbar.scrolled .nav-buttons .btn:hover {
-    border: none;
+    /* 滚动状态下hover时也只禁用transform，保持其他所有效果 */
+    transform: none !important;
 }
 
 /* 滚动状态下30%标签恢复原始设计 */
@@ -569,9 +585,25 @@ body {
     gap: 12px;
 }
 
-/* 导航按钮在默认状态下的hover边框效果 */
+/* 导航栏按钮特殊样式 - 只禁用大小和位移变化 */
+.nav-buttons .btn {
+    /* 只禁用transform和transition，保持其他所有原始样式 */
+    transform: none !important;
+}
+
 .nav-buttons .btn:hover {
-    border: 2px solid var(--text-primary);
+    /* 只禁用transform，保持其他所有hover效果 */
+    transform: none !important;
+}
+
+.nav-buttons .btn:active {
+    /* 只禁用transform，保持其他所有active效果 */
+    transform: none !important;
+}
+
+.nav-buttons .btn:focus {
+    /* 只禁用transform，保持其他所有focus效果 */
+    transform: none !important;
 }
 
 .nav-toggle {
@@ -789,7 +821,7 @@ main {
     height: 100%;
     left: 0;
     top: 0;
-    filter: blur(108.19px);
+    filter: blur(80px);
     pointer-events: none;
     z-index: 1;
     overflow: visible;
@@ -922,23 +954,22 @@ main {
     animation-delay: 2.5s;
 }
 
-/* 底部同心圆 */
+/* 底部同心圆 - 响应式左右居中布局 */
 .concentric-circle {
     position: absolute;
     border-radius: 9999px;
     pointer-events: none;
     z-index: 50;
-    top: 0;
-    left: 0;
+    /* 只实现左右居中，保持原始y轴位置 */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* 同心圆1 - 最外层 */
 .circle-1 {
-    width: 872px;
-    height: 872px;
-    left: 284px;
+    width: var(--circle-1-size);
+    height: var(--circle-1-size);
     top: 172px;
-    position: absolute;
     opacity: 0.18;
     background: white;
     z-index: 50;
@@ -946,11 +977,9 @@ main {
 
 /* 同心圆2 - 中间层 */
 .circle-2 {
-    width: 732px;
-    height: 732px;
-    left: 354px;
+    width: var(--circle-2-size);
+    height: var(--circle-2-size);
     top: 241px;
-    position: absolute;
     opacity: 0.30;
     background: white;
     z-index: 50;
@@ -958,11 +987,9 @@ main {
 
 /* 同心圆3 - 最内层 */
 .circle-3 {
-    width: 586px;
-    height: 586px;
-    left: 427px;
+    width: var(--circle-3-size);
+    height: var(--circle-3-size);
     top: 314px;
-    position: absolute;
     opacity: 0.50;
     background: radial-gradient(ellipse 32.11% 54.34% at 50.09% 40.37%, rgba(255, 255, 255, 0) 0%, white 100%);
     z-index: 50;
@@ -1038,6 +1065,11 @@ main {
         transform: scale(0.8) rotate(-10deg);
     }
     
+    /* 同心圆响应式缩放 */
+    .concentric-circle {
+        transform: translateX(-50%) scale(0.9);
+    }
+    
     /* 保持动画效果 */
     .bg-ellipse-1 { animation: float-ellipse-1 8s ease-in-out infinite; }
     .bg-ellipse-2 { animation: float-ellipse-2 10s ease-in-out infinite; }
@@ -1060,8 +1092,13 @@ main {
         transform: scale(0.6) rotate(-10deg);
     }
     
+    /* 同心圆响应式缩放 */
+    .concentric-circle {
+        transform: translateX(-50%) scale(0.7);
+    }
+    
     .hero-background {
-        filter: blur(50px);
+        filter: blur(40px);
     }
     
     /* 保持动画效果 */
@@ -1081,8 +1118,13 @@ main {
         transform: scale(0.4) rotate(-10deg);
     }
     
+    /* 同心圆响应式缩放 */
+    .concentric-circle {
+        transform: translateX(-50%) scale(0.5);
+    }
+    
     .hero-background {
-        filter: blur(30px);
+        filter: blur(25px);
     }
     
     /* 保持动画效果 */
@@ -1095,6 +1137,31 @@ main {
     .bg-ellipse-7 { animation: float-ellipse-7 7s ease-in-out infinite; }
     .bg-ellipse-8 { animation: float-ellipse-8 6s ease-in-out infinite; }
     .bg-ellipse-9 { animation: float-ellipse-9 5s ease-in-out infinite; }
+}
+
+/* 超小屏幕的同心圆优化 */
+@media (max-width: 360px) {
+    .concentric-circle {
+        transform: translateX(-50%) scale(0.4);
+    }
+    
+    .hero-background {
+        filter: blur(20px);
+    }
+}
+
+/* 中等屏幕的同心圆优化 */
+@media (min-width: 1201px) and (max-width: 1600px) {
+    .concentric-circle {
+        transform: translateX(-50%) scale(0.95);
+    }
+}
+
+/* 大屏幕的同心圆优化 */
+@media (min-width: 1601px) {
+    .concentric-circle {
+        transform: translateX(-50%) scale(1.1);
+    }
 }
 
 .features-grid {

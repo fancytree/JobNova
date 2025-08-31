@@ -871,23 +871,52 @@ window.addEventListener('resize', throttle(function() {
  * 初始化主页面按钮
  */
 function initMainPageButtons() {
-    // 创建英雄区域的主要按钮
-    const heroPrimaryBtn = createButton({
-        text: 'Get Started',
-        type: 'Primary',
-        size: 'L',
-        rightIcon: true,
-        onClick: (e, btn) => {
-            console.log('Get Started clicked!');
-            // 这里可以添加跳转逻辑
-        }
-    });
-    
-    // 将按钮添加到页面
+    // 创建英雄区域的主要按钮 - 使用自定义样式
     const heroPrimaryContainer = document.getElementById('hero-primary-btn');
     
     if (heroPrimaryContainer) {
-        heroPrimaryContainer.appendChild(heroPrimaryBtn.getElement());
+        // 创建按钮容器
+        const buttonContainer = document.createElement('div');
+        buttonContainer.setAttribute('data-lefticon', 'false');
+        buttonContainer.setAttribute('data-righticon', 'true');
+        buttonContainer.setAttribute('data-size', 'L');
+        buttonContainer.setAttribute('data-state', 'Default');
+        buttonContainer.setAttribute('data-text', 'true');
+        buttonContainer.setAttribute('data-type', 'Primary');
+        buttonContainer.style.cssText = 'width: 100%; height: 100%; padding-left: 20px; padding-right: 20px; padding-top: 14px; padding-bottom: 14px; background: var(--text-default, #0E1401); border-radius: 9999px; justify-content: center; align-items: center; gap: 8px; display: inline-flex; cursor: pointer;';
+        
+        // 创建按钮文字
+        const buttonText = document.createElement('div');
+        buttonText.style.cssText = 'color: var(--text-white, white); font-size: 16px; font-family: Inter; font-weight: 500; line-height: 24px; letter-spacing: 0.30px; word-wrap: break-word;';
+        buttonText.textContent = 'Get Started';
+        
+        // 创建右侧图标容器
+        const iconContainer = document.createElement('div');
+        iconContainer.setAttribute('data-property-1', 'Apply');
+        iconContainer.style.cssText = 'width: 24px; height: 24px; position: relative; overflow: hidden;';
+        
+        // 创建第一个图标元素
+        const iconElement1 = document.createElement('div');
+        iconElement1.style.cssText = 'width: 18.34px; height: 18.34px; left: 2.40px; top: 2.40px; position: absolute; outline: 1px white solid; outline-offset: -0.50px;';
+        
+        // 创建第二个图标元素
+        const iconElement2 = document.createElement('div');
+        iconElement2.style.cssText = 'width: 7.05px; height: 7.05px; left: 13.69px; top: 2.40px; position: absolute; outline: 1px white solid; outline-offset: -0.50px;';
+        
+        // 组装按钮
+        iconContainer.appendChild(iconElement1);
+        iconContainer.appendChild(iconElement2);
+        buttonContainer.appendChild(buttonText);
+        buttonContainer.appendChild(iconContainer);
+        
+        // 添加点击事件
+        buttonContainer.addEventListener('click', function() {
+            console.log('Get Started clicked!');
+            // 这里可以添加跳转逻辑
+        });
+        
+        // 将按钮添加到容器
+        heroPrimaryContainer.appendChild(buttonContainer);
     }
     
     // 初始化导航栏按钮
