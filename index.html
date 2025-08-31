@@ -182,11 +182,52 @@
                             <div class="step-visual worldwide-visual">
                                 <!-- 世界地图视觉元素 -->
                                 <div class="worldwide-container">
-                                    <img class="worldwide-main" src="Asset/worldwide/main.png" alt="Worldwide Main" />
-                                    <img class="worldwide-overlay" src="Asset/worldwide/overlay.png" alt="Worldwide Overlay" />
-                                    <img class="worldwide-icon" src="Asset/worldwide/icon.png" alt="Worldwide Icon" />
+                                    <img class="worldwide-main" src="Asset/worldwide/Map.png" alt="World Map" loading="lazy" />
+                                    <img class="worldwide-overlay" src="Asset/worldwide/Avatar.png" alt="Avatar" loading="lazy" />
+                                    
+                                    <!-- 匹配度指示器 - 单个测试 -->
+                                    <div class="match-indicator match-indicator-1">
+                                        <img class="indicator-bg" src="Asset/worldwide/bg.svg" alt="Indicator Background" />
+                                        <svg class="indicator-progress" width="24" height="24">
+                                            <!-- 进度圆环 -->
+                                            <circle 
+                                                cx="12" 
+                                                cy="12" 
+                                                r="11" 
+                                                fill="none" 
+                                                stroke="#A8FA00" 
+                                                stroke-width="2"
+                                                stroke-dasharray="69 69"
+                                                stroke-dashoffset="7"
+                                                stroke-linecap="round" />
+                                        </svg>
+                                        <div class="indicator-text">90%</div>
+                                    </div>
+                                    
+                                    <!-- 第二个指示器 -->
+                                    <div class="match-indicator match-indicator-2">
+                                        <img class="indicator-bg" src="Asset/worldwide/bg.svg" alt="Indicator Background" />
+                                        <svg class="indicator-progress" width="20" height="20">
+                                            <!-- 进度圆环 -->
+                                            <circle 
+                                                cx="10" 
+                                                cy="10" 
+                                                r="9" 
+                                                fill="none" 
+                                                stroke="#A8FA00" 
+                                                stroke-width="2"
+                                                stroke-dasharray="56.52 56.52"
+                                                stroke-dashoffset="5.65"
+                                                stroke-linecap="round" />
+                                        </svg>
+                                        <div class="indicator-text">85%</div>
+                                    </div>
                                 </div>
                             </div>
+                            <div style="position: absolute; left: 262px; top: 75px; width: 313px; height: 347px; border-radius: 12px; overflow: hidden; box-shadow: 8px 16px 24px rgba(24, 24, 26, 0.04);">
+                                <img src="Asset/worldwide/Apply.png" alt="Apply" style="width: 100%; height: 100%; object-fit: contain;" />
+                            </div>
+
                         </div>
                         <div class="step-right">
                             <div class="step-text-content">

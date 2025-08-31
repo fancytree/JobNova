@@ -416,6 +416,7 @@ body {
 .step-left {
     flex: 1;
     padding-right: 40px;
+    position: relative;
 }
 
 .step-right {
@@ -551,6 +552,149 @@ body {
     transform: translateY(-8px) rotateZ(-1deg);
     box-shadow: 38px 46px 58px rgba(32, 32, 35, 0.18);
     animation: bottomFloat 1.8s ease-in-out infinite;
+}
+
+/* Tracking opportunities worldwide 模块的hover动效 */
+.step-container:hover .worldwide-main {
+    transform: scale(1.02);
+    filter: brightness(1.05);
+    transition: all 0.3s ease;
+}
+
+.step-container:hover .worldwide-overlay {
+    transform: translateY(-4px) scale(1.05);
+    transition: all 0.3s ease;
+}
+
+.step-container:hover .worldwide-icon {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 12px 20px 32px rgba(32, 32, 35, 0.08);
+    transition: all 0.3s ease;
+}
+
+/* 90% 匹配度指示器样式 */
+.match-indicator {
+    position: absolute;
+    width: 30.72px;
+    height: 34.48px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.indicator-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: contain;
+}
+
+.indicator-progress {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+}
+
+.indicator-progress circle {
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+
+.indicator-text {
+    color: white;
+    font-size: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    position: absolute;
+    left: 50%;
+    top: 6px;
+    transform: translateX(-50%);
+    width: 21px;
+    height: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+/* 单个指示器样式 */
+.match-indicator-1 .indicator-progress {
+    left: 4px;
+    top: 4px;
+}
+
+.match-indicator-1 .indicator-text {
+    width: 24px;
+    height: 24px;
+    font-size: 6px;
+    left: 4px;
+    top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    pointer-events: none;
+    text-align: center;
+    line-height: 24px;
+    transform: translate(0, 0);
+}
+
+.match-indicator-2 .indicator-progress {
+    left: 4px;
+    top: 4px;
+}
+
+.match-indicator-2 .indicator-text {
+    width: 20px;
+    height: 20px;
+    font-size: 5px;
+    left: 4px;
+    top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    pointer-events: none;
+    text-align: center;
+    line-height: 20px;
+    transform: translate(0, 0);
+}
+
+/* 单个指示器位置 */
+.match-indicator-1 {
+    left: 174px;
+    top: 202px;
+    width: 32px;
+    height: 36px;
+    transform: scale(1.0);
+}
+
+.match-indicator-2 {
+    left: 200px;
+    top: 180px;
+    width: 28px;
+    height: 32px;
+    transform: scale(1.0);
+}
+
+
+
+/* 单个指示器的hover动效 */
+.step-container:hover .match-indicator {
+    animation: indicatorPulse 2s ease-in-out infinite;
+}
+
+@keyframes indicatorPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
 }
 
 /* 浮动动画 */
@@ -2652,7 +2796,7 @@ main {
 
 /* Worldwide 视觉元素样式 */
 .worldwide-visual {
-    height: 383px !important;
+    height: 450px !important;
     background: transparent !important;
     position: relative;
     overflow: visible;
@@ -2671,25 +2815,23 @@ main {
     left: 25px;
     top: 58px;
     object-fit: contain;
+    background: none;
+    border-radius: 0;
+    transition: all 0.3s ease;
 }
 
 .worldwide-overlay {
-    width: 313px;
-    height: 347px;
-    position: absolute;
-    left: 262px;
-    top: 75px;
-    box-shadow: 8px 16px 24px rgba(32, 32, 35, 0.04);
-    object-fit: contain;
-}
-
-.worldwide-icon {
     width: 99px;
     height: 99px;
     position: absolute;
     left: 0px;
     top: 0px;
     object-fit: contain;
+    background: none;
+    border-radius: 0;
+    transition: all 0.3s ease;
 }
+
+
 
 
