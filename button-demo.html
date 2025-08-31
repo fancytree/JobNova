@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Component Demo - JobNova</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .demo-section {
+            padding: 40px 20px;
+            border-bottom: 1px solid #e8f5d0;
+        }
+        .demo-section h2 {
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .button-example {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .button-example h4 {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin: 0;
+        }
+        .code-example {
+            background: #f4fbe8;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: var(--text-primary);
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+        <h1 style="text-align: center; color: var(--text-primary); margin: 40px 0;">Button Component Demo</h1>
+        
+        <!-- Button Types -->
+        <div class="demo-section">
+            <h2>Button Types</h2>
+            <div class="button-grid">
+                <div class="button-example">
+                    <h4>Primary Button</h4>
+                    <div id="primary-btn"></div>
+                    <div class="code-example">
+createButton({
+    text: 'Primary Button',
+    type: 'Primary',
+    size: 'L'
+})
+                    </div>
+                </div>
+                
+                <div class="button-example">
+                    <h4>Secondary Button</h4>
+                    <div id="secondary-btn"></div>
+                    <div class="code-example">
+createButton({
+    text: 'Secondary Button',
+    type: 'Secondary',
+    size: 'L'
+})
+                    </div>
+                </div>
+                
+                <div class="button-example">
+                    <h4>Outline Button</h4>
+                    <div id="outline-btn"></div>
+                    <div class="code-example">
+createButton({
+    text: 'Outline Button',
+    type: 'Outline',
+    size: 'L'
+})
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Button Sizes -->
+        <div class="demo-section">
+            <h2>Button Sizes</h2>
+            <div class="button-grid">
+                <div class="button-example">
+                    <h4>Small (S) - 32px</h4>
+                    <div id="small-btn"></div>
+                </div>
+                
+                <div class="button-example">
+                    <h4>Medium (M) - 40px</h4>
+                    <div id="medium-btn"></div>
+                </div>
+                
+                <div class="button-example">
+                    <h4>Large (L) - 40px</h4>
+                    <div id="large-btn"></div>
+                </div>
+                
+                <div class="button-example">
+                    <h4>Extra Large (XL) - 48px</h4>
+                    <div id="xl-btn"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Button with Icons -->
+        <div class="demo-section">
+            <h2>Buttons with Icons</h2>
+            <div class="button-grid">
+                <div class="button-example">
+                    <h4>Left Icon</h4>
+                    <div id="left-icon-btn"></div>
+                    <div class="code-example">
+createButton({
+    text: 'Left Icon',
+    leftIcon: '🚀',
+    type: 'Primary'
+})
+                    </div>
+                </div>
+                
+                <div class="button-example">
+                    <h4>Right Icon</h4>
+                    <div id="right-icon-btn"></div>
+                    <div class="code-example">
+createButton({
+    text: 'Right Icon',
+    rightIcon: '→',
+    type: 'Primary'
+})
+                    </div>
+                </div>
+                
+                <div class="button-example">
+                    <h4>Both Icons</h4>
+                    <div id="both-icons-btn"></div>
+                    <div class="code-example">
+createButton({
+    text: 'Both Icons',
+    leftIcon: '⭐',
+    rightIcon: '💫',
+    type: 'Primary'
+})
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Button States -->
+        <div class="demo-section">
+            <h2>Button States</h2>
+            <div class="button-grid">
+                <div class="button-example">
+                    <h4>Default</h4>
+                    <div id="default-btn"></div>
+                </div>
+                
+                <div class="button-example">
+                    <h4>Loading</h4>
+                    <div id="loading-btn"></div>
+                </div>
+                
+                <div class="button-example">
+                    <h4>Disabled</h4>
+                    <div id="disabled-btn"></div>
+                </div>
+                
+                <div class="button-example">
+                    <h4>Hover & Pressed</h4>
+                    <div id="interactive-btn"></div>
+                    <p style="font-size: 12px; color: var(--text-secondary); text-align: center;">
+                        Hover: #B0F809<br>
+                        Pressed: #A0DE10<br>
+                        Disabled: #D0D0D5
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Interactive Examples -->
+        <div class="demo-section">
+            <h2>Interactive Examples</h2>
+            <div class="button-grid">
+                <div class="button-example">
+                    <h4>State Changer</h4>
+                    <div id="state-changer-btn"></div>
+                    <div id="state-changer-controls"></div>
+                </div>
+                
+                <div class="button-example">
+                    <h4>Text Changer</h4>
+                    <div id="text-changer-btn"></div>
+                    <div id="text-changer-controls"></div>
+                </div>
+                
+                <div class="button-example">
+                    <h4>Type Changer</h4>
+                    <div id="type-changer-btn"></div>
+                    <div id="type-changer-controls"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Full Width Button -->
+        <div class="demo-section">
+            <h2>Full Width Button</h2>
+            <div id="full-width-btn"></div>
+            <div class="code-example">
+createButton({
+    text: 'Full Width Button',
+    type: 'Primary',
+    fullWidth: true
+})
+            </div>
+        </div>
+        
+        <!-- Icon Only Button -->
+        <div class="demo-section">
+            <h2>Icon Only Button</h2>
+            <div id="icon-only-btn"></div>
+            <div class="code-example">
+createButton({
+    text: 'Settings',
+    leftIcon: '⚙️',
+    iconOnly: true,
+    type: 'Primary'
+})
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // 等待页面加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            // 创建不同类型的按钮
+            const primaryBtn = createButton({
+                text: 'Primary Button',
+                type: 'Primary',
+                size: 'L',
+                onClick: (e, btn) => console.log('Primary button clicked!', btn)
+            });
+            document.getElementById('primary-btn').appendChild(primaryBtn.getElement());
+            
+            const secondaryBtn = createButton({
+                text: 'Secondary Button',
+                type: 'Secondary',
+                size: 'L',
+                onClick: (e, btn) => console.log('Secondary button clicked!', btn)
+            });
+            document.getElementById('secondary-btn').appendChild(secondaryBtn.getElement());
+            
+            const outlineBtn = createButton({
+                text: 'Outline Button',
+                type: 'Outline',
+                size: 'L',
+                onClick: (e, btn) => console.log('Outline button clicked!', btn)
+            });
+            document.getElementById('outline-btn').appendChild(outlineBtn.getElement());
+            
+            // 创建不同尺寸的按钮
+            const smallBtn = createButton({
+                text: 'Small Button',
+                type: 'Primary',
+                size: 'S'
+            });
+            document.getElementById('small-btn').appendChild(smallBtn.getElement());
+            
+            const mediumBtn = createButton({
+                text: 'Medium Button',
+                type: 'Primary',
+                size: 'M'
+            });
+            document.getElementById('medium-btn').appendChild(mediumBtn.getElement());
+            
+            const largeBtn = createButton({
+                text: 'Large Button',
+                type: 'Primary',
+                size: 'L'
+            });
+            document.getElementById('large-btn').appendChild(largeBtn.getElement());
+            
+            const xlBtn = createButton({
+                text: 'XL Button',
+                type: 'Primary',
+                size: 'XL'
+            });
+            document.getElementById('xl-btn').appendChild(xlBtn.getElement());
+            
+            // 创建带图标的按钮
+            const leftIconBtn = createButton({
+                text: 'Left Icon',
+                leftIcon: '🚀',
+                type: 'Primary'
+            });
+            document.getElementById('left-icon-btn').appendChild(leftIconBtn.getElement());
+            
+            const rightIconBtn = createButton({
+                text: 'Right Icon',
+                rightIcon: '→',
+                type: 'Primary'
+            });
+            document.getElementById('right-icon-btn').appendChild(rightIconBtn.getElement());
+            
+            const bothIconsBtn = createButton({
+                text: 'Both Icons',
+                leftIcon: '⭐',
+                rightIcon: '💫',
+                type: 'Primary'
+            });
+            document.getElementById('both-icons-btn').appendChild(bothIconsBtn.getElement());
+            
+            // 创建不同状态的按钮
+            const defaultBtn = createButton({
+                text: 'Default State',
+                type: 'Primary'
+            });
+            document.getElementById('default-btn').appendChild(defaultBtn.getElement());
+            
+            const loadingBtn = createButton({
+                text: 'Loading State',
+                type: 'Primary',
+                state: 'Loading'
+            });
+            document.getElementById('loading-btn').appendChild(loadingBtn.getElement());
+            
+            const disabledBtn = createButton({
+                text: 'Disabled State',
+                type: 'Primary',
+                state: 'Disabled'
+            });
+            document.getElementById('disabled-btn').appendChild(disabledBtn.getElement());
+            
+            // 创建交互式按钮展示hover和pressed效果
+            const interactiveBtn = createButton({
+                text: 'Interactive Button',
+                type: 'Primary',
+                onClick: (e, btn) => {
+                    console.log('Interactive button clicked!');
+                }
+            });
+            document.getElementById('interactive-btn').appendChild(interactiveBtn.getElement());
+            
+            // 创建交互式按钮
+            const stateChangerBtn = createButton({
+                text: 'Change State',
+                type: 'Primary',
+                onClick: (e, btn) => {
+                    const states = ['Default', 'Loading', 'Disabled'];
+                    const currentState = btn.options.state;
+                    const currentIndex = states.indexOf(currentState);
+                    const nextIndex = (currentIndex + 1) % states.length;
+                    btn.setState(states[nextIndex]);
+                }
+            });
+            document.getElementById('state-changer-btn').appendChild(stateChangerBtn.getElement());
+            
+            const textChangerBtn = createButton({
+                text: 'Click to Change',
+                type: 'Primary',
+                onClick: (e, btn) => {
+                    const texts = ['Hello!', 'World!', 'JobNova!', 'AI!'];
+                    const currentText = btn.options.text;
+                    const currentIndex = texts.indexOf(currentText);
+                    const nextIndex = (currentIndex + 1) % texts.length;
+                    btn.setText(texts[nextIndex]);
+                }
+            });
+            document.getElementById('text-changer-btn').appendChild(textChangerBtn.getElement());
+            
+            const typeChangerBtn = createButton({
+                text: 'Change Type',
+                type: 'Primary',
+                onClick: (e, btn) => {
+                    const types = ['Primary', 'Secondary', 'Outline'];
+                    const currentType = btn.options.type;
+                    const currentIndex = types.indexOf(currentType);
+                    const nextIndex = (currentIndex + 1) % types.length;
+                    btn.setType(types[nextIndex]);
+                }
+            });
+            document.getElementById('type-changer-btn').appendChild(typeChangerBtn.getElement());
+            
+            // 创建全宽按钮
+            const fullWidthBtn = createButton({
+                text: 'Full Width Button',
+                type: 'Primary',
+                fullWidth: true,
+                onClick: (e, btn) => console.log('Full width button clicked!', btn)
+            });
+            document.getElementById('full-width-btn').appendChild(fullWidthBtn.getElement());
+            
+            // 创建仅图标按钮
+            const iconOnlyBtn = createButton({
+                text: 'Settings',
+                leftIcon: '⚙️',
+                iconOnly: true,
+                type: 'Primary',
+                onClick: (e, btn) => console.log('Icon only button clicked!', btn)
+            });
+            document.getElementById('icon-only-btn').appendChild(iconOnlyBtn.getElement());
+        });
+    </script>
+</body>
+</html>

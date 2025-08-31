@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobNova - AI-Powered Recruitment Platform</title>
+    <meta name="description" content="JobNova is an AI-powered recruitment platform that helps companies and job seekers connect more efficiently">
+    <meta name="keywords" content="recruitment,jobs,AI recruitment,smart matching,talent acquisition">
+    
+    <!-- 外部资源 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="Asset/favicon.ico">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Asset/Logo.png" alt="JobNova Logo" class="logo-img">
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#features" class="nav-link">Feature</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#faqs" class="nav-link">FAQs</a>
+                <div class="nav-affiliate">
+                    <span class="affiliate-text">Affiliate</span>
+                    <div class="affiliate-badge">
+                        <span>30%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nav-buttons">
+                <div id="nav-find-talents-btn"></div>
+                <div id="nav-login-btn"></div>
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main>
+        <!-- 英雄区域 -->
+        <section id="home" class="hero">
+            <!-- Banner背景 -->
+            <div class="hero-background">
+                <!-- 背景色块 -->
+                <div class="bg-ellipse bg-ellipse-1"></div>
+                <div class="bg-ellipse bg-ellipse-2"></div>
+                <div class="bg-ellipse bg-ellipse-3"></div>
+                <div class="bg-ellipse bg-ellipse-4"></div>
+                <div class="bg-ellipse bg-ellipse-5"></div>
+                <div class="bg-ellipse bg-ellipse-6"></div>
+                <div class="bg-ellipse bg-ellipse-7"></div>
+                <div class="bg-ellipse bg-ellipse-8"></div>
+                <div class="bg-ellipse bg-ellipse-9"></div>
+            </div>
+            
+            <!-- 同心圆光晕效果 -->
+            <div class="concentric-circle circle-1"></div>
+            <div class="concentric-circle circle-2"></div>
+            <div class="concentric-circle circle-3"></div>
+            
+            <!-- 漂浮动效卡片 -->
+            <div class="floating-card card-1">
+                <i class="fas fa-user-check"></i>
+                <span>AI Smart Screening</span>
+            </div>
+            <div class="floating-card card-2">
+                <i class="fas fa-chart-line"></i>
+                <span>Real-time Analytics</span>
+            </div>
+            <div class="floating-card card-3">
+                <i class="fas fa-handshake"></i>
+                <span>Smart Matching</span>
+            </div>
+            
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Stop Browsing. Start Getting Matched.🚀
+                    </h1>
+                    <p class="hero-subtitle">
+                        Be the first to know and seize the ideal job openings that match your background.
+                    </p>
+                    <div class="hero-buttons">
+                        <div id="hero-primary-btn"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 功能特性区域 -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Why Choose JobNova?</h2>
+                    <p class="section-subtitle">
+                        We provide the most advanced AI recruitment technology to make the recruitment process smarter and more efficient
+                    </p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="feature-title">AI Smart Matching</h3>
+                        <p class="feature-description">
+                            Intelligent algorithms based on deep learning that accurately analyze job requirements and candidate skills to provide the best matching recommendations.
+                        </p>
+                        <ul class="feature-list">
+                            <li>Skill Match Analysis</li>
+                            <li>Cultural Fit Assessment</li>
+                            <li>Predictive Talent Recommendations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3 class="feature-title">数据分析洞察</h3>
+                        <p class="feature-description">
+                            全面的招聘数据分析和可视化报告，帮助您做出更明智的招聘决策。
+                        </p>
+                        <ul class="feature-list">
+                            <li>招聘漏斗分析</li>
+                            <li>候选人来源追踪</li>
+                            <li>招聘效率指标</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="feature-title">团队协作</h3>
+                        <p class="feature-description">
+                            强大的团队协作功能，让招聘团队更高效地工作，提升招聘质量。
+                        </p>
+                        <ul class="feature-list">
+                            <li>多角色权限管理</li>
+                            <li>实时协作工具</li>
+                            <li>面试反馈系统</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="feature-title">移动端支持</h3>
+                        <p class="feature-description">
+                            完全响应式设计，支持各种设备，让您随时随地管理招聘流程。
+                        </p>
+                        <ul class="feature-list">
+                            <li>移动端优化</li>
+                            <li>离线功能支持</li>
+                            <li>推送通知</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 工作流程区域 -->
+        <section class="workflow">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">简单高效的工作流程</h2>
+                    <p class="section-subtitle">
+                        从发布职位到成功招聘，只需几个简单步骤
+                    </p>
+                </div>
+                
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>发布职位</h3>
+                            <p>使用智能模板快速创建职位描述，AI自动优化关键词</p>
+                        </div>
+                    </div>
+                    
+                    <div class="workflow-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>AI筛选</h3>
+                            <p>系统自动筛选简历，按匹配度排序，节省90%筛选时间</p>
+                        </div>
+                    </div>
+                    
+                    <div class="workflow-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>智能面试</h3>
+                            <p>AI辅助面试，提供问题建议和候选人评估报告</p>
+                        </div>
+                    </div>
+                    
+                    <div class="workflow-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>成功招聘</h3>
+                            <p>完成招聘流程，获得详细的招聘效果分析报告</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 客户案例区域 -->
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">客户成功案例</h2>
+                    <p class="section-subtitle">
+                        看看其他企业如何使用JobNova提升招聘效率
+                    </p>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"JobNova帮助我们节省了70%的简历筛选时间，招聘质量显著提升。"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="Asset/avatar1.jpg" alt="张经理" class="author-avatar">
+                            <div class="author-info">
+                                <h4>张经理</h4>
+                                <span>人力资源总监 - 科技公司</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"AI智能匹配功能非常准确，我们找到了很多优秀的候选人。"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="Asset/avatar2.jpg" alt="李总监" class="author-avatar">
+                            <div class="author-info">
+                                <h4>李总监</h4>
+                                <span>招聘经理 - 互联网公司</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"数据分析功能让我们更好地了解招聘效果，优化了招聘策略。"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="Asset/avatar3.jpg" alt="王总" class="author-avatar">
+                            <div class="author-info">
+                                <h4>王总</h4>
+                                <span>CEO - 创业公司</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQs区域 -->
+        <section id="faqs" class="faqs">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="section-subtitle">
+                        Find answers to common questions about JobNova platform
+                    </p>
+                </div>
+                
+                <div class="faqs-grid">
+                    <div class="faq-item">
+                        <h3>How does AI matching work?</h3>
+                        <p>Our AI analyzes job requirements and candidate skills to provide the best matches based on multiple factors including experience, skills, and cultural fit.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>What pricing plans are available?</h3>
+                        <p>We offer three main plans: Basic, Professional, and Enterprise, each with different features and pricing to suit various business needs.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>Is there a free trial?</h3>
+                        <p>Yes, we offer a free trial period so you can experience the full power of our AI recruitment platform before making a decision.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>How secure is my data?</h3>
+                        <p>We implement enterprise-grade security measures to protect your data, including encryption, secure hosting, and regular security audits.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 价格方案区域 -->
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">选择适合您的方案</h2>
+                    <p class="section-subtitle">
+                        灵活的定价方案，满足不同规模企业的需求
+                    </p>
+                </div>
+                
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>基础版</h3>
+                            <div class="price">
+                                <span class="currency">¥</span>
+                                <span class="amount">299</span>
+                                <span class="period">/月</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 最多5个职位</li>
+                            <li><i class="fas fa-check"></i> 基础AI筛选</li>
+                            <li><i class="fas fa-check"></i> 标准报告</li>
+                            <li><i class="fas fa-check"></i> 邮件支持</li>
+                        </ul>
+                        <button class="btn btn-outline btn-full">选择方案</button>
+                    </div>
+                    
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">推荐</div>
+                        <div class="pricing-header">
+                            <h3>专业版</h3>
+                            <div class="price">
+                                <span class="currency">¥</span>
+                                <span class="amount">599</span>
+                                <span class="period">/月</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 最多20个职位</li>
+                            <li><i class="fas fa-check"></i> 高级AI匹配</li>
+                            <li><i class="fas fa-check"></i> 详细分析报告</li>
+                            <li><i class="fas fa-check"></i> 团队协作</li>
+                            <li><i class="fas fa-check"></i> 优先支持</li>
+                        </ul>
+                        <button class="btn btn-primary btn-full">选择方案</button>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>企业版</h3>
+                            <div class="price">
+                                <span class="currency">¥</span>
+                                <span class="amount">1299</span>
+                                <span class="period">/月</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 无限职位</li>
+                            <li><i class="fas fa-check"></i> 定制AI模型</li>
+                            <li><i class="fas fa-check"></i> 高级分析</li>
+                            <li><i class="fas fa-check"></i> API集成</li>
+                            <li><i class="fas fa-check"></i> 专属客户经理</li>
+                        </ul>
+                        <button class="btn btn-outline btn-full">联系销售</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我们区域 -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title">关于 JobNova</h2>
+                        <p class="about-description">
+                            JobNova成立于2020年，是一家专注于AI招聘技术的创新公司。我们的使命是通过人工智能技术，
+                            让招聘过程更智能、更高效，帮助企业找到最合适的人才，同时帮助求职者找到最理想的工作。
+                        </p>
+                        <div class="about-stats">
+                            <div class="about-stat">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">AI专家</span>
+                            </div>
+                            <div class="about-stat">
+                                <span class="stat-number">3年+</span>
+                                <span class="stat-label">行业经验</span>
+                            </div>
+                            <div class="about-stat">
+                                <span class="stat-number">99.9%</span>
+                                <span class="stat-label">系统稳定性</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary">了解更多</button>
+                    </div>
+                    <div class="about-visual">
+                        <img src="Asset/about-illustration.svg" alt="关于JobNova" class="about-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我们区域 -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h2 class="section-title">联系我们</h2>
+                        <p class="contact-description">
+                            有任何问题或需要帮助？我们随时为您提供支持。
+                        </p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h4>邮箱</h4>
+                                    <p>contact@jobnova.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h4>电话</h4>
+                                    <p>400-888-8888</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>地址</h4>
+                                    <p>北京市朝阳区科技园区</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">姓名</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">邮箱</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company">公司</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">消息</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-full">发送消息</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="Asset/Logo.png" alt="JobNova Logo" class="logo-img">
+                        <span class="logo-text">JobNova</span>
+                    </div>
+                    <p class="footer-description">
+                        智能招聘平台，让招聘更智能，让人才更精准。
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-weixin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-weibo"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>产品</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">功能特性</a></li>
+                        <li><a href="#">价格方案</a></li>
+                        <li><a href="#">API文档</a></li>
+                        <li><a href="#">更新日志</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>支持</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">培训资源</a></li>
+                        <li><a href="#">社区论坛</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>公司</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">团队介绍</a></li>
+                        <li><a href="#">招聘信息</a></li>
+                        <li><a href="#">新闻动态</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 JobNova. 保留所有权利。</p>
+                <div class="footer-legal">
+                    <a href="#">隐私政策</a>
+                    <a href="#">服务条款</a>
+                    <a href="#">Cookie政策</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
