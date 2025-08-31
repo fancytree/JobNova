@@ -109,18 +109,185 @@ body {
     padding: 0 var(--spacing-md);
 }
 
+/* Body容器 */
+.body-container {
+    width: 100%;
+    padding: 0 64px;
+    box-sizing: border-box;
+}
+
+/* Why Jobnova? 部分样式 */
+.why-jobnova {
+    padding: 80px 0;
+    background: white;
+}
+
+.why-jobnova-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.why-jobnova-title {
+    font-size: 48px;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 72px;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.why-jobnova-cards {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.why-jobnova-card {
+    width: 410px;
+    height: 430px;
+    padding: 72px 24px;
+    background: white;
+    border-radius: 24px;
+    outline: 2px solid #D0D0D5;
+    outline-offset: -2px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.why-jobnova-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.card-icon {
+    margin-bottom: 24px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+}
+
+.globe-icon {
+    width: 70px;
+    height: 70px;
+    border: 3.75px solid #151614;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.envelope-icon {
+    width: 70px;
+    height: 70px;
+    border: 3.75px solid #151614;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.document-icon {
+    width: 70px;
+    height: 70px;
+    border: 3.75px solid #151614;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.green-dot {
+    width: 31.88px;
+    height: 31.88px;
+    background: #A8FA00;
+    border-radius: 46.88px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.card-main-text {
+    font-size: 32px;
+    font-family: Inter;
+    font-weight: 600;
+    color: #0E1401;
+    margin-bottom: 12px;
+    line-height: 48px;
+    text-align: center;
+}
+
+.card-sub-text {
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 400;
+    color: #151614;
+    margin-bottom: 0;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.card-detail-text {
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 400;
+    color: #898B8D;
+    line-height: 24px;
+    text-align: center;
+    height: 48px;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .why-jobnova-cards {
+        gap: 30px;
+    }
+    
+    .why-jobnova-card {
+        width: 350px;
+        height: 380px;
+        padding: 60px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .why-jobnova {
+        padding: 60px 0;
+    }
+    
+    .why-jobnova-title {
+        font-size: 36px;
+    }
+    
+    .why-jobnova-cards {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+    }
+    
+    .why-jobnova-card {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        min-height: 350px;
+    }
+}
+
 /* Button Component Styles */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    padding: 14px 24px;
+    gap: 8px;
+    padding: 14px 20px;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
-    letter-spacing: 0.30px;
+    letter-spacing: 0px;
     text-decoration: none;
     border: none;
     border-radius: 9999px;
@@ -133,6 +300,9 @@ body {
     background: var(--text-primary);
     word-wrap: break-word;
     box-sizing: border-box;
+    height: auto;
+    min-height: 40px;
+    flex-direction: row;
 }
 
 /* Button Sizes */
@@ -151,10 +321,11 @@ body {
 }
 
 .btn-L {
-    padding: 14px 24px;
+    padding: 14px 20px;
     font-size: 16px;
     line-height: 24px;
-    height: 40px;
+    height: 48px;
+    min-height: 48px;
 }
 
 .btn-XL {
@@ -173,19 +344,91 @@ body {
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
-    letter-spacing: 0.30px;
+    letter-spacing: 0px;
+    height: 48px;
+    width: 164px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    flex-grow: 0;
 }
 
 .btn-Primary:hover {
-    background: var(--button-hover);
+    background: var(--primary-color);
     color: var(--text-primary);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
 
+/* 确保hover时按钮内的所有元素都有平滑过渡 */
+.btn-Primary:hover * {
+    transition: all var(--transition-normal);
+}
+
 .btn-Primary:active {
-    background: var(--button-pressed);
+    background: #A0DE10;
+    color: var(--text-primary);
     transform: translateY(0);
+}
+
+/* 确保Primary Button内的图标在hover和active状态下颜色一致 */
+.btn-Primary:hover img,
+.btn-Primary:hover svg {
+    filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+}
+
+.btn-Primary:active img,
+.btn-Primary:active svg {
+    filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+}
+
+
+
+/* 确保Primary Button内的所有元素都垂直居中 */
+.btn-Primary * {
+    vertical-align: middle;
+    align-self: center;
+}
+
+/* 特别处理Primary Button内的文字和图标 */
+.btn-Primary .btn-text,
+.btn-Primary div[style*="color: var(--text-white)"] {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.btn-Primary img,
+.btn-Primary .btn-right-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: all var(--transition-normal);
+}
+
+/* 箭头hover动效 - 简洁版本 */
+.btn-Primary:hover img,
+.btn-Primary:hover .btn-right-icon {
+    transform: translateX(4px) scale(1.1);
+    filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+    transition: all 0.3s ease;
+}
+
+/* 箭头进入动画 - 简单淡入 */
+.btn-Primary img,
+.btn-Primary .btn-right-icon {
+    opacity: 0;
+    animation: arrowFadeIn 0.4s ease forwards;
+}
+
+@keyframes arrowFadeIn {
+    to {
+        opacity: 1;
+    }
 }
 
 .btn-Secondary {
@@ -237,17 +480,17 @@ body {
 
 /* Focus states for accessibility */
 .btn:focus {
-    outline: 2px solid var(--button-hover);
-    outline-offset: 2px;
+    outline: 2px solid var(--button-hover) !important;
+    outline-offset: 2px !important;
 }
 
 .btn:focus:not(:focus-visible) {
-    outline: none;
+    outline: none !important;
 }
 
 .btn:focus-visible {
-    outline: 2px solid var(--button-hover);
-    outline-offset: 2px;
+    outline: 2px solid var(--button-hover) !important;
+    outline-offset: 2px !important;
 }
 
 /* Pressed state styles */
@@ -606,6 +849,23 @@ body {
     transform: none !important;
 }
 
+/* 导航栏中的Small Primary按钮使用Small尺寸的样式 */
+.nav-buttons .btn.btn-Primary.btn-S {
+    height: 32px !important;
+    padding: 10px 20px !important;
+    font-size: 14px !important;
+    line-height: 20px !important;
+    width: auto !important;
+    min-width: auto !important;
+    max-width: none !important;
+}
+
+
+
+
+
+
+
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -654,12 +914,13 @@ main {
 }
 
 .hero-title {
-    font-size: 60px;
+    font-size: 48px;
+    font-family: Inter;
     font-weight: 600;
-    line-height: 74px;
+    line-height: 72px;
     margin-bottom: var(--spacing-xl);
     color: var(--text-primary);
-    max-width: 1011.36px;
+    max-width: 800px;
     text-align: center;
 }
 
