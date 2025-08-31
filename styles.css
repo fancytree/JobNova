@@ -1,4 +1,132 @@
 /* 全局重置和基础样式 */
+
+/* ==================== 文字样式系统 ==================== */
+
+/* Heading 样式 */
+.heading-h1 {
+    font-size: 60px;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 78px;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.heading-h2 {
+    font-size: 48px;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 72px;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.heading-h3 {
+    font-size: 32px;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 48px;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.heading-h4 {
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 36px;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.heading-h5 {
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 30px;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.heading-h6 {
+    font-size: 18px;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 28px;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* Body 样式 */
+.body-large {
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 32px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.body-medium {
+    font-size: 18px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 28px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.body-small {
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.body-caption {
+    font-size: 14px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* 文字颜色变体 */
+.text-primary {
+    color: var(--text-primary);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.text-default {
+    color: var(--text-default);
+}
+
+.text-white {
+    color: var(--text-white);
+}
+
+.text-accent {
+    color: var(--primary-color);
+}
+
+/* 文字对齐 */
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
 * {
     margin: 0;
     padding: 0;
@@ -138,15 +266,16 @@ body {
 
 .why-jobnova-cards {
     display: flex;
-    gap: 40px;
-    justify-content: center;
+    gap: 24px;
+    justify-content: space-between;
     align-items: stretch;
+    width: 100%;
 }
 
 .why-jobnova-card {
-    width: 410px;
-    height: 430px;
-    padding: 72px 24px;
+    flex: 1;
+    height: 440px;
+    padding: 64px 24px;
     background: white;
     border-radius: 24px;
     outline: 2px solid #D0D0D5;
@@ -156,12 +285,14 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-sizing: border-box;
 }
 
 .why-jobnova-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .card-icon {
@@ -173,31 +304,14 @@ body {
     height: 72px;
 }
 
-.globe-icon {
+.card-svg-icon {
     width: 70px;
     height: 70px;
-    border: 3.75px solid #151614;
-    border-radius: 50%;
-    position: relative;
-    overflow: hidden;
-}
-
-.envelope-icon {
-    width: 70px;
-    height: 70px;
-    border: 3.75px solid #151614;
-    border-radius: 8px;
-    position: relative;
-    overflow: hidden;
-}
-
-.document-icon {
-    width: 70px;
-    height: 70px;
-    border: 3.75px solid #151614;
-    border-radius: 8px;
-    position: relative;
-    overflow: hidden;
+    object-fit: contain;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    z-index: 2;
 }
 
 .green-dot {
@@ -208,48 +322,347 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 1;
 }
 
 .card-main-text {
+    /* H3样式 */
+    color: var(--text-default, #0E1401);
     font-size: 32px;
     font-family: Inter;
     font-weight: 600;
-    color: #0E1401;
-    margin-bottom: 12px;
     line-height: 48px;
+    margin-bottom: 0;
     text-align: center;
+    width: 362px;
+    height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-sub-text {
+    /* body20样式 */
     font-size: 20px;
     font-family: Inter;
     font-weight: 400;
+    line-height: 28px;
     color: #151614;
     margin-bottom: 0;
-    line-height: 1.4;
     text-align: center;
+    align-self: stretch;
+}
+
+/* 主要文字和次要文字的容器 */
+.card-text-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: auto;
 }
 
 .card-detail-text {
+    /* body16样式 */
     font-size: 16px;
     font-family: Inter;
     font-weight: 400;
-    color: #898B8D;
     line-height: 24px;
+    color: #898B8D;
     text-align: center;
     height: 48px;
+    align-self: stretch;
+}
+
+/* How it works 模块样式 */
+.how-it-works {
+    padding: 80px 0;
+    background: white;
+    margin-top: 80px;
+}
+
+.how-it-works-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+}
+
+.how-it-works-title {
+    font-size: 48px;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 72px;
+    color: var(--text-primary);
+    text-align: center;
+    margin: 0;
+}
+
+.how-it-works-content {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    width: 100%;
+}
+
+.step-container {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    width: 100%;
+}
+
+.step-left {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.step-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 步骤文字内容样式 */
+.step-text-content {
+    width: 100%;
+    height: 100%;
+    padding-right: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.step-header {
+    align-self: stretch;
+    height: 54px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+}
+
+.step-number {
+    width: 32px;
+    height: 32px;
+    left: -2px;
+    top: 0px;
+    position: absolute;
+    background: #A8FA00;
+    border-radius: 50%;
+    z-index: 1;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    background-image: none !important;
+    background-clip: content-box !important;
+    color: transparent !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+}
+
+.step-title {
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    color: var(--text-default, #0E1401);
+    font-size: 32px;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 48px;
+    word-wrap: break-word;
+    margin: 0;
+    z-index: 2;
+}
+
+.step-description {
+    align-self: stretch;
+    color: var(--text-default, #0E1401);
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 24px;
+    word-wrap: break-word;
+    margin: 0;
+}
+
+.step-visual {
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    background: #f5f5f5;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 16px;
+}
+
+/* AI Match Visual 样式 */
+.ai-match-visual {
+    height: 418px !important;
+    background: transparent !important;
+    position: relative;
+    overflow: visible;
+}
+
+.ai-match-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: visible;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+}
+
+.step-container:hover .ai-match-container {
+    transform: translateY(-12px) rotateX(5deg);
+}
+
+.step-container:hover .ai-main-image {
+    transform: scale(1.05) rotateY(-3deg);
+    animation: float 2s ease-in-out infinite;
+}
+
+.step-container:hover .ai-cards-right {
+    transform: translateX(-8px) rotateY(8deg);
+}
+
+.step-container:hover .ai-card {
+    transform: translateY(-6px);
+    box-shadow: 45px 55px 70px rgba(32, 32, 35, 0.2);
+    animation: cardPulse 2s ease-in-out infinite;
+}
+
+.step-container:hover .ai-card:nth-child(2) {
+    transform: translateY(-6px);
+    box-shadow: 45px 55px 70px rgba(32, 32, 35, 0.2);
+    animation: cardPulseReverse 2s ease-in-out infinite;
+}
+
+.step-container:hover .ai-card-bottom {
+    transform: translateY(-8px) rotateZ(-1deg);
+    box-shadow: 38px 46px 58px rgba(32, 32, 35, 0.18);
+    animation: bottomFloat 1.8s ease-in-out infinite;
+}
+
+/* 浮动动画 */
+@keyframes float {
+    0%, 100% { transform: scale(1.05) rotateY(-3deg) translateY(0px); }
+    50% { transform: scale(1.05) rotateY(-3deg) translateY(-4px); }
+}
+
+@keyframes cardPulse {
+    0%, 100% { 
+        transform: translateY(-6px) scale(1.05) translateX(0px); 
+    }
+    50% { 
+        transform: translateY(-6px) scale(0.95) translateX(-2px); 
+    }
+}
+
+@keyframes cardPulseReverse {
+    0%, 100% { 
+        transform: translateY(-6px) scale(0.95) translateX(0px); 
+    }
+    50% { 
+        transform: translateY(-6px) scale(1.05) translateX(-2px); 
+    }
+}
+
+@keyframes bottomFloat {
+    0%, 100% { transform: translateY(-8px) rotateZ(-1deg) translateX(0px); }
+    50% { transform: translateY(-8px) rotateZ(-1deg) translateX(3px); }
+}
+
+.ai-main-image {
+    width: 400px;
+    height: 418px;
+    position: absolute;
+    left: 58px;
+    top: 0px;
+    object-fit: contain;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ai-cards-right {
+    width: 257px;
+    position: absolute;
+    left: 298px;
+    top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ai-card {
+    width: 256px;
+    height: 136px;
+    box-shadow: 32px 40px 48px rgba(32, 32, 35, 0.12);
+    object-fit: contain;
+    border-radius: 8px;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ai-card:nth-child(2) {
+    height: 140px;
+}
+
+.ai-card-bottom {
+    width: 250px;
+    height: 77px;
+    position: absolute;
+    left: 0px;
+    top: 327px;
+    box-shadow: 32px 40px 48px rgba(32, 32, 35, 0.12);
+    border-radius: 12px;
+    object-fit: contain;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* 响应式设计 */
 @media (max-width: 1024px) {
     .why-jobnova-cards {
-        gap: 30px;
+        gap: 20px;
     }
     
     .why-jobnova-card {
-        width: 350px;
         height: 380px;
-        padding: 60px 20px;
+        padding: 56px 20px;
+    }
+    
+    .how-it-works {
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+    
+    .step-container {
+        flex-direction: column;
+        gap: 48px;
+    }
+    
+    .step-left,
+    .step-right {
+        width: 100%;
+        padding-right: 0;
+    }
+    
+    .how-it-works-title {
+        font-size: 36px;
+        line-height: 54px;
+    }
+    
+    .step-title {
+        font-size: 28px;
+        line-height: 42px;
     }
 }
 
@@ -273,6 +686,30 @@ body {
         max-width: 400px;
         height: auto;
         min-height: 350px;
+        padding: 48px 20px;
+    }
+    
+    .how-it-works {
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+    
+    .how-it-works-container {
+        gap: 48px;
+    }
+    
+    .how-it-works-content {
+        gap: 48px;
+    }
+    
+    .how-it-works-title {
+        font-size: 32px;
+        line-height: 48px;
+    }
+    
+    .step-title {
+        font-size: 24px;
+        line-height: 36px;
     }
 }
 
@@ -914,13 +1351,13 @@ main {
 }
 
 .hero-title {
-    font-size: 48px;
+    font-size: 60px;
     font-family: Inter;
     font-weight: 600;
-    line-height: 72px;
+    line-height: 78px;
     margin-bottom: var(--spacing-xl);
     color: var(--text-primary);
-    max-width: 800px;
+    max-width: 1000px;
     text-align: center;
 }
 
@@ -1512,35 +1949,7 @@ main {
     position: relative;
 }
 
-.step-number {
-    width: 60px;
-    height: 60px;
-    background: var(--primary-color);
-    color: var(--text-primary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--font-size-xl);
-    font-weight: 700;
-    margin: 0 auto var(--spacing-lg);
-    position: relative;
-}
-
-.step-number::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -50%;
-    width: 100%;
-    height: 2px;
-    background-color: var(--border-color);
-    transform: translateY(-50%);
-}
-
-.workflow-step:last-child .step-number::after {
-    display: none;
-}
+/* 删除冲突的step-number样式 */
 
 .step-content h3 {
     font-size: var(--font-size-lg);
@@ -2239,6 +2648,48 @@ main {
 
 .visible {
     display: block;
+}
+
+/* Worldwide 视觉元素样式 */
+.worldwide-visual {
+    height: 383px !important;
+    background: transparent !important;
+    position: relative;
+    overflow: visible;
+}
+
+.worldwide-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.worldwide-main {
+    width: 488px;
+    height: 383px;
+    position: absolute;
+    left: 25px;
+    top: 58px;
+    object-fit: contain;
+}
+
+.worldwide-overlay {
+    width: 313px;
+    height: 347px;
+    position: absolute;
+    left: 262px;
+    top: 75px;
+    box-shadow: 8px 16px 24px rgba(32, 32, 35, 0.04);
+    object-fit: contain;
+}
+
+.worldwide-icon {
+    width: 99px;
+    height: 99px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    object-fit: contain;
 }
 
 
