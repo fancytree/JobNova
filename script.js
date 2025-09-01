@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initButtonEffects();
     initKeyboardNavigation();
     initMainPageButtons();
+    initReviewCards();
+    initFAQ();
+    initCTAButton();
     
     console.log('JobNova平台初始化完成！');
 });
@@ -1059,5 +1062,464 @@ if (typeof module !== 'undefined' && module.exports) {
         throttle
     };
 }
+
+// ==================== 评价卡片组件 ====================
+
+/**
+ * 评价卡片数据配置
+ */
+const reviewsData = [
+    {
+        id: 1,
+        companyLogo: "Asset/Company logo/Zoom.svg",
+        rating: 5,
+        title: "Found my dream internship fast.",
+        content: "\"As a student, timing is everything. Jobnova's real-time updates meant I applied to openings right when they went live. The global coverage helped me land a remote internship with Zoom, something I might have missed entirely without the platform.\"",
+        avatar: "Asset/Arvata/image-1.png",
+        userName: "Liam Thompson",
+        userTitle: "Software Developer (Intern)"
+    },
+    {
+        id: 2,
+        companyLogo: "Asset/Company logo/Canva.svg",
+        rating: 5,
+        title: "Precision that saves you time.",
+        content: "\"I've used job boards before, but nothing compares to Jobnova's accuracy. The match percentages were spot-on and helped me skip irrelevant roles. Within two weeks, I was interviewing for positions that aligned perfectly with my design background.\"",
+        avatar: "Asset/Arvata/image-2.png",
+        userName: "Sarah Miller",
+        userTitle: "Product Designer"
+    },
+    {
+        id: 3,
+        companyLogo: "Asset/Company logo/Google.svg",
+        rating: 5,
+        title: "Cross-border job search made easy.",
+        content: "\"I was based in Canada but wanted to relocate to USA. Jobnova's global coverage gave me instant access to openings in San Francisco, with precise match percentages that reflected my international experience.\"",
+        avatar: "Asset/Arvata/image-3.png",
+        userName: "Mike Johnson",
+        userTitle: "Software Engineer"
+    },
+    {
+        id: 4,
+        companyLogo: "Asset/Company logo/Heap.svg",
+        rating: 5,
+        title: "A smarter way to job search.",
+        content: "\"The precision of Jobnova's matching algorithm blew me away. I was targeting specific industries and locations, and the platform delivered exactly what I needed. I landed at Heap without wasting weeks on irrelevant applications.\"",
+        avatar: "Asset/Arvata/image-4.png",
+        userName: "Emily Chen",
+        userTitle: "Data Analyst"
+    },
+    {
+        id: 5,
+        companyLogo: "Asset/Company logo/Amazon.svg",
+        rating: 5,
+        title: "Matched to jobs that inspire me.",
+        content: "\"I wanted a role that challenged me creatively. Jobnova didn't just show me available jobs — it pinpointed the ones where my background would truly shine. That's how I found my current position at Amazon, which feels like the perfect fit.\"",
+        avatar: "Asset/Arvata/image-5.png",
+        userName: "David Rodriguez",
+        userTitle: "Product Manager"
+    },
+    {
+        id: 6,
+        companyLogo: "Asset/Company logo/Dribbble.svg",
+        rating: 5,
+        title: "Never miss an opening again.",
+        content: "\"As a fresh graduate, I needed speed and accuracy. Jobnova's instant updates meant I was always one of the first to apply. That early advantage helped me secure my internship at Dribbble in record time.\"",
+        avatar: "Asset/Arvata/image-6.png",
+        userName: "Jessica Liu",
+        userTitle: "Design Intern"
+    },
+    {
+        id: 7,
+        companyLogo: "Asset/Company logo/Discord.svg",
+        rating: 5,
+        title: "Perfect for startup culture seekers.",
+        content: "\"I was looking for a dynamic startup environment where I could make a real impact. Jobnova's intelligent matching connected me with Discord, where the culture and technical challenges aligned perfectly with my career goals.\"",
+        avatar: "Asset/Arvata/image-7.png",
+        userName: "Alex Kim",
+        userTitle: "Full Stack Developer"
+    },
+    {
+        id: 8,
+        companyLogo: "Asset/Company logo/Microsoft.svg",
+        rating: 5,
+        title: "Enterprise-level opportunities unlocked.",
+        content: "\"I wanted to transition into enterprise UX design but didn't know where to start. Jobnova's matching algorithm identified my transferable skills and connected me with Microsoft, where I'm now designing products used by millions.\"",
+        avatar: "Asset/Arvata/image-8.png",
+        userName: "Maria Santos",
+        userTitle: "Senior UX Designer"
+    },
+    {
+        id: 9,
+        companyLogo: "Asset/Company logo/Vercel.svg",
+        rating: 5,
+        title: "Tech-stack matching at its finest.",
+        content: "\"I specialize in Next.js and React, and finding companies that truly value these skills was challenging. Jobnova's detailed skill matching connected me directly with Vercel, where my expertise is not just valued but essential.\"",
+        avatar: "Asset/Arvata/image.png",
+        userName: "Ryan Park",
+        userTitle: "Frontend Engineer"
+    },
+    {
+        id: 10,
+        companyLogo: "Asset/Company logo/Yelp.svg",
+        rating: 5,
+        title: "Local market expertise recognized.",
+        content: "\"I had deep knowledge of the San Francisco market but struggled to find roles that valued this local expertise. Jobnova's intelligent matching recognized this unique strength and connected me with Yelp, where my local insights drive real business impact.\"",
+        avatar: "Asset/Arvata/4af879ae31ae4669a323b3ed19cfca9b.webp",
+        userName: "Sophie Anderson",
+        userTitle: "Regional Marketing Manager"
+    },
+    {
+        id: 11,
+        companyLogo: "Asset/Company logo/IBM.svg",
+        rating: 5,
+        title: "AI-powered career acceleration.",
+        content: "\"I was passionate about machine learning but stuck in traditional data roles. Jobnova's AI understood my potential beyond my current position and matched me with IBM's AI research division, where I'm now pushing the boundaries of what's possible.\"",
+        avatar: "Asset/Arvata/f3dccd1034e24c4e9a3a87e28974cda2.webp",
+        userName: "James Wilson",
+        userTitle: "AI Research Scientist"
+    },
+    {
+        id: 12,
+        companyLogo: "Asset/Company logo/Optimizely.svg",
+        rating: 5,
+        title: "Growth hacking meets perfect matching.",
+        content: "\"I needed a role where I could combine data science with creative marketing strategies. Jobnova's sophisticated matching identified this rare intersection and connected me with Optimizely, where growth hacking isn't just encouraged—it's the core mission.\"",
+        avatar: "Asset/Arvata/f8207a8ea7644db2a0d42062f45f3f86.webp",
+        userName: "Rachel Green",
+        userTitle: "Senior Growth Strategist"
+    }
+];
+
+/**
+ * 创建星级评分HTML
+ * @param {number} rating - 评分数量 (1-5)
+ * @returns {string} 星级评分HTML字符串
+ */
+function createStarRating(rating = 5) {
+    let starsHtml = '';
+    for (let i = 0; i < rating; i++) {
+        starsHtml += `<img src="Asset/Star.svg" alt="Star" style="width: 16px; height: 16px;" />`;
+    }
+    return starsHtml;
+}
+
+/**
+ * 创建评价卡片组件
+ * @param {Object} reviewData - 评价数据对象
+ * @returns {string} 评价卡片HTML字符串
+ */
+function createReviewCard(reviewData) {
+    const {
+        companyLogo,
+        rating,
+        title,
+        content,
+        avatar,
+        userName,
+        userTitle
+    } = reviewData;
+
+    return `
+        <div class="review-card" style="padding: 20px; background: rgba(255, 255, 255, 0.80); box-shadow: 0px 0px 4px rgba(21, 22, 20, 0.12); border-radius: 24px; display: flex; flex-direction: column; gap: 10px; height: auto;">
+            <div style="display: flex; flex-direction: column; gap: 32px; height: auto;">
+                <div style="padding: 12px; display: flex; flex-direction: column; gap: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div style="display: flex; flex-direction: column; gap: 14.95px;">
+                            <img src="${companyLogo}" alt="Company Logo" style="height: 21px; width: auto;" />
+                        </div>
+                        <div style="height: 20px; display: flex; align-items: center; gap: 9px;">
+                            ${createStarRating(rating)}
+                        </div>
+                    </div>
+                    <div style="color: var(--text-default); font-size: 16px; font-family: Inter; font-weight: 700;">${title}</div>
+                    <div style="color: var(--text-default); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px;">${content}</div>
+                </div>
+                <div style="padding: 0 6px; display: flex; align-items: flex-end; gap: 12px;">
+                    <img style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover;" src="${avatar}" alt="${userName}" />
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <div style="color: var(--text-default); font-size: 14px; font-family: Inter; font-weight: 600;">${userName}</div>
+                        <div style="color: var(--text-default); font-size: 14px; font-family: Inter; font-weight: 400;">${userTitle}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * 渲染所有评价卡片
+ * @param {string} containerId - 容器元素ID
+ * @param {Array} reviews - 评价数据数组
+ */
+function renderReviewCards(containerId = 'user-reviews-content', reviews = reviewsData) {
+    const container = document.getElementById(containerId);
+    if (!container) {
+        console.error(`评价卡片容器未找到: ${containerId}`);
+        return;
+    }
+
+    // 创建3列无限滚动布局
+    const columns = 3;
+    const itemsPerColumn = Math.ceil(reviews.length / columns);
+    
+    let columnsHtml = '';
+    
+    for (let col = 0; col < columns; col++) {
+        const startIndex = col * itemsPerColumn;
+        const endIndex = Math.min(startIndex + itemsPerColumn, reviews.length);
+        const columnReviews = reviews.slice(startIndex, endIndex);
+        
+        console.log(`第${col + 1}列 (索引 ${startIndex}-${endIndex-1}):`, columnReviews.map(r => r.id));
+        
+        // 为每一列创建HTML，重复内容以实现无限滚动
+        const columnCardsHtml = columnReviews.map(review => createReviewCard(review)).join('');
+        // 复制内容以实现无限滚动效果
+        const duplicatedContent = columnCardsHtml + columnCardsHtml;
+        
+        columnsHtml += `<div class="review-column">${duplicatedContent}</div>`;
+    }
+    
+    console.log('无限滚动列布局创建完成');
+    
+    // 使用列布局HTML
+    const reviewsHtml = columnsHtml;
+    
+    // 插入到容器中
+    container.innerHTML = reviewsHtml;
+    
+    console.log(`成功渲染 ${reviews.length} 个评价卡片（列优先排列）`);
+}
+
+/**
+ * 初始化评价卡片组件
+ * 在DOM加载完成后自动调用
+ */
+function initReviewCards() {
+    console.log('初始化评价卡片组件（无限滚动模式）...');
+    
+    // 渲染评价卡片
+    renderReviewCards();
+    
+    console.log('评价卡片无限滚动组件初始化完成！');
+}
+
+// 导出全局函数供HTML使用
+window.JobNova = window.JobNova || {};
+window.JobNova.renderReviewCards = renderReviewCards;
+window.JobNova.createReviewCard = createReviewCard;
+
+// ==================== FAQ 组件功能 ====================
+
+// FAQ数据
+const faqData = [
+    {
+        id: 'faq-1',
+        question: 'How does it work?',
+        answer: 'Jobnova uses advance AI algorithms to match your skills and interests to global jobs that are difficult to find on mainstream job sites. You\'ll receive daily, personalized recommendations via email. Importantly, nearly all the jobs we send your way are postings listed within the past 8 hours.',
+        isExpanded: false // 默认收起状态
+    },
+    {
+        id: 'faq-2',
+        question: 'Which areas and functions do you support for job searching?',
+        answer: 'Our job search platform currently covers the global. We excel at helping professionals find new opportunities in the following fields:<br><br>• Software Engineering<br>• Business/Data Analyst<br>• Data Scientist<br>• Machine Learning Engineer<br>• Finance/Risk/Quant<br>• Product<br>• Consultant',
+        isExpanded: false
+    },
+    {
+        id: 'faq-3',
+        question: 'Can I cancel my subscription at any time?',
+        answer: 'Yes, you can cancel anytime, and we know you\'ll cancel the subscription soon because we hope you\'ll find a dream job ASAP through Jobnova.',
+        isExpanded: false
+    },
+    {
+        id: 'faq-4',
+        question: 'Who can I contact for support or queries?',
+        answer: 'For any support or queries, you can reach out to libaedugroup@gmail.com.',
+        isExpanded: false
+    },
+    {
+        id: 'faq-5',
+        question: 'How many job recommendation will I receive?',
+        answer: 'Most of the users received over 600 personalized job matches per month.',
+        isExpanded: false
+    },
+    {
+        id: 'faq-6',
+        question: 'How often will I receive job alerts?',
+        answer: 'You will receive personalized job alert daily, tailored to your specified career interests and qualifications.',
+        isExpanded: false
+    },
+    {
+        id: 'faq-7',
+        question: 'What happened after I paid for subscription?',
+        answer: 'You will start receiving job recommendations the very next day!',
+        isExpanded: false
+    }
+];
+
+/**
+ * 创建FAQ项目HTML
+ * @param {Object} faq - FAQ数据对象
+ * @returns {string} FAQ项目HTML字符串
+ */
+function createFAQItem(faq) {
+    const isExpanded = faq.isExpanded;
+    
+    // 统一的HTML结构，始终包含答案内容
+    const expandedClass = isExpanded ? 'faq-item-expanded' : '';
+    const separatorHtml = isExpanded ? '' : '<div class="faq-separator"></div>';
+    
+    return `
+        ${separatorHtml}
+        <div class="faq-item ${expandedClass}" data-faq-id="${faq.id}">
+            <div class="faq-question">
+                <div class="faq-question-text">${faq.question}</div>
+                <div class="faq-icon">
+                    <div class="faq-arrow"></div>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <div class="faq-answer-text">${faq.answer}</div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * 渲染FAQ列表
+ * @param {string} containerId - FAQ容器ID
+ * @param {Array} faqs - FAQ数据数组
+ */
+function renderFAQs(containerId = 'faq-content', faqs = faqData) {
+    console.log('开始渲染FAQ列表...');
+    
+    const container = document.getElementById(containerId);
+    if (!container) {
+        console.error(`FAQ容器未找到: ${containerId}`);
+        return;
+    }
+    
+    // 添加顶部分隔线
+    let faqsHtml = '<div class="faq-separator"></div>';
+    
+    // 生成所有FAQ项目
+    faqsHtml += faqs.map(faq => createFAQItem(faq)).join('');
+    
+    // 插入到容器中
+    container.innerHTML = faqsHtml;
+    
+    console.log(`成功渲染 ${faqs.length} 个FAQ项目`);
+}
+
+/**
+ * 初始化FAQ交互功能
+ * 处理FAQ项目的展开/收起逻辑
+ */
+function initFAQ() {
+    console.log('初始化FAQ组件...');
+    
+    // 渲染FAQ列表
+    renderFAQs();
+    
+    // 添加点击事件监听
+    const container = document.getElementById('faq-content');
+    if (!container) {
+        console.error('FAQ容器未找到');
+        return;
+    }
+    
+    // 使用事件委托处理点击事件
+    container.addEventListener('click', (e) => {
+        const faqItem = e.target.closest('.faq-item');
+        if (faqItem) {
+            const faqId = faqItem.getAttribute('data-faq-id');
+            console.log(`点击FAQ项目: ${faqId}`);
+            toggleFAQItem(faqId);
+        }
+    });
+    
+    console.log('FAQ组件初始化完成！');
+}
+
+/**
+ * 切换FAQ项目的展开/收起状态
+ * @param {string} faqId - FAQ项目ID
+ */
+function toggleFAQItem(faqId) {
+    // 找到对应的FAQ数据
+    const faqIndex = faqData.findIndex(faq => faq.id === faqId);
+    if (faqIndex === -1) {
+        console.error(`未找到FAQ项目: ${faqId}`);
+        return;
+    }
+    
+    const currentFaq = faqData[faqIndex];
+    const wasExpanded = currentFaq.isExpanded;
+    
+    // 找到DOM元素
+    const faqElement = document.querySelector(`[data-faq-id="${faqId}"]`);
+    if (!faqElement) {
+        console.error(`未找到FAQ DOM元素: ${faqId}`);
+        return;
+    }
+    
+    // 找到答案面板
+    const panel = faqElement.querySelector('.faq-answer');
+    if (!panel) {
+        console.error(`未找到FAQ答案面板: ${faqId}`);
+        return;
+    }
+
+    if (wasExpanded) {
+        // 收起当前项目
+        currentFaq.isExpanded = false;
+        faqElement.classList.remove('faq-item-expanded');
+        panel.style.maxHeight = "0px";
+        console.log(`收起FAQ项目: ${faqId}`);
+    } else {
+        // 展开当前项目 - 允许多个问题同时展开
+        currentFaq.isExpanded = true;
+        faqElement.classList.add('faq-item-expanded');
+        
+        // 确保准确计算高度，包括内边距
+        const contentHeight = panel.scrollHeight;
+        panel.style.maxHeight = contentHeight + "px";
+        console.log(`展开FAQ项目: ${faqId}，高度: ${contentHeight}px`);
+    }
+}
+// ==================== CTA 按钮功能 ====================
+
+/**
+ * 初始化CTA按钮
+ */
+function initCTAButton() {
+    console.log('初始化CTA按钮...');
+    
+    const ctaButtonContainer = document.getElementById('cta-primary-btn');
+    if (!ctaButtonContainer) {
+        console.error('未找到CTA按钮容器');
+        return;
+    }
+    
+    // 创建CTA按钮
+    const ctaButtonInstance = createButton({
+        text: 'Get started for free',
+        type: 'Primary',
+        size: 'L',
+        rightIcon: '<img src="Asset/next.svg" alt="Next" style="width: 24px; height: 24px;">',
+        onClick: () => {
+            console.log('CTA按钮被点击');
+            // 移除链接跳转
+        }
+    });
+    
+    // 获取DOM元素并添加到容器
+    ctaButtonContainer.appendChild(ctaButtonInstance.getElement());
+    console.log('CTA按钮初始化完成');
+}
+
+window.JobNova.reviewsData = reviewsData;
 
 console.log('JobNova JavaScript模块加载完成！');

@@ -2269,18 +2269,9 @@ main {
     margin-top: var(--spacing-xl);
 }
 
-.faq-item {
-    background: white;
-    padding: var(--spacing-xl);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-md);
-    transition: all var(--transition-normal);
-}
+/* 旧的FAQ样式已移除，使用新的FAQ组件样式 */
 
-.faq-item:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-}
+/* 移除FAQ项目的hover位移效果 */
 
 .faq-item h3 {
     font-size: var(--font-size-lg);
@@ -2547,121 +2538,11 @@ main {
 }
 
 /* 页脚 */
-.footer {
-    background-color: var(--text-primary);
-    color: white;
-    padding: var(--spacing-2xl) 0 var(--spacing-lg);
-}
 
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-xl);
-    margin-bottom: var(--spacing-xl);
-}
 
-.footer-logo {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-md);
-}
 
-.footer-logo .logo-img {
-    width: 120px;
-    height: 26px;
-}
 
-.footer-logo .logo-text {
-    font-size: var(--font-size-xl);
-    font-weight: 700;
-    color: white;
-}
 
-.footer-description {
-    color: var(--text-light);
-    margin-bottom: var(--spacing-lg);
-    line-height: 1.6;
-}
-
-.social-links {
-    display: flex;
-    gap: var(--spacing-md);
-}
-
-.social-link {
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-decoration: none;
-    transition: all var(--transition-normal);
-}
-
-.social-link:hover {
-    background: var(--primary-color);
-    transform: translateY(-2px);
-    color: var(--text-primary);
-}
-
-.footer-section h4 {
-    font-size: var(--font-size-lg);
-    font-weight: 600;
-    margin-bottom: var(--spacing-md);
-    color: white;
-}
-
-.footer-links {
-    list-style: none;
-}
-
-.footer-links li {
-    margin-bottom: var(--spacing-sm);
-}
-
-.footer-links a {
-    color: var(--text-light);
-    text-decoration: none;
-    transition: color var(--transition-fast);
-}
-
-.footer-links a:hover {
-    color: white;
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: var(--spacing-lg);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--spacing-md);
-}
-
-.footer-bottom p {
-    color: var(--text-light);
-}
-
-.footer-legal {
-    display: flex;
-    gap: var(--spacing-md);
-}
-
-.footer-legal a {
-    color: var(--text-light);
-    text-decoration: none;
-    font-size: var(--font-size-sm);
-    transition: color var(--transition-fast);
-}
-
-.footer-legal a:hover {
-    color: white;
-}
 
 /* 动画 */
 @keyframes float {
@@ -3216,14 +3097,720 @@ main {
     margin: 0;
 }
 
+/* 评价区域容器 - 设置固定高度和遮罩效果 */
 .user-reviews-content {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    display: flex;
+    flex-direction: row; /* 水平排列列 */
+    gap: 24px; /* 列间距 */
     width: 100%;
     max-width: 1312px;
     padding: 0 64px;
     box-sizing: border-box;
+    height: 100vh; /* 一屏幕高度 */
+    overflow: hidden; /* 隐藏溢出内容 */
+    position: relative;
+    
+    /* 渐变遮罩效果 */
+    mask: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 15%,
+        black 85%,
+        transparent 100%
+    );
+    -webkit-mask: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 15%,
+        black 85%,
+        transparent 100%
+    );
+}
+
+/* 每一列的样式 - 无限滚动容器 */
+.review-column {
+    display: flex;
+    flex-direction: column; /* 垂直排列卡片 */
+    flex: 1; /* 每列等宽 */
+    gap: 24px; /* 列内卡片间距 */
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+/* 第一列滚动动画 - 左侧较慢 */
+.review-column:nth-child(1) {
+    animation-name: scrollUp1;
+    animation-duration: 60s;
+}
+
+/* 第二列滚动动画 - 中间最快 */
+.review-column:nth-child(2) {
+    animation-name: scrollUp2;
+    animation-duration: 45s;
+}
+
+/* 第三列滚动动画 - 右侧较慢 */
+.review-column:nth-child(3) {
+    animation-name: scrollUp3;
+    animation-duration: 55s;
+}
+
+/* 滚动动画关键帧 */
+@keyframes scrollUp1 {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes scrollUp2 {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes scrollUp3 {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+/* 评价卡片样式 - 移除之前的动画 */
+.review-card {
+    height: auto !important;
+    min-height: auto !important;
+    align-self: start;
+    margin: 0;
+    box-sizing: border-box;
+    opacity: 1; /* 始终可见 */
+    transform: none; /* 移除变换 */
+    flex-shrink: 0; /* 防止卡片被压缩 */
+}
+
+/* 卡片hover效果 - 暂停滚动 */
+.review-column:hover {
+    animation-play-state: paused;
+}
+
+/* 确保Grid项目间距一致 */
+.user-reviews-content > .review-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 内容从顶部开始 */
+}
+
+/* FAQ Section Styles */
+.faq-section {
+    width: 100%;
+    padding: 120px 0;
+    background: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.faq-container {
+    width: 100%;
+    max-width: 1012px;
+    padding: 0 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 64px;
+    box-sizing: border-box;
+}
+
+.faq-title {
+    align-self: stretch;
+    text-align: center;
+    color: var(--text-default, #0E1401);
+    font-size: 48px;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 72px;
+    word-wrap: break-word;
+    margin: 0;
+}
+
+.faq-content {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+
+/* FAQ项目 - 基础样式，确保垂直布局 */
+.faq-item {
+    width: 100%;
+    padding: 24px 0;
+    background: white;
+    border-bottom: 1px #EFEFEF solid;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition: border-bottom-color 0.3s ease;
+}
+
+.faq-item::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--primary-color, #B0F809);
+    transition: width 0.3s ease;
+    z-index: 10;
+}
+
+.faq-item:hover::after {
+    width: 100%;
+}
+
+/* FAQ项目 - 展开状态 */
+.faq-item-expanded {
+    border-bottom: 1px var(--text-default, #0E1401) solid;
+}
+
+/* FAQ问题容器 - 统一样式 */
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+/* FAQ问题文本 */
+.faq-question-text {
+    flex: 1;
+    color: var(--text-default, #0E1401);
+    font-size: 18px;
+    font-family: Inter;
+    font-weight: 500;
+    line-height: 27px;
+    word-wrap: break-word;
+    margin: 0;
+}
+
+/* FAQ图标容器 */
+.faq-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* FAQ Plus图标 */
+.faq-arrow {
+    width: 24px;
+    height: 24px;
+    background-image: url('Asset/plus.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotate(0deg);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 展开状态的Plus图标 - 旋转45度 */
+.faq-item-expanded .faq-arrow {
+    transform: rotate(45deg);
+}
+
+/* FAQ答案容器 - 简化方案，确保动画稳定 */
+.faq-answer {
+    width: 100%;
+    padding: 0 0;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    position: relative;
+}
+
+/* FAQ答案文本容器 */
+.faq-answer-content {
+    padding: 16px 0 0 0;
+}
+
+/* FAQ答案文本 */
+.faq-answer-text {
+    align-self: stretch;
+    color: var(--text-default, #0E1401);
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 24px;
+    word-wrap: break-word;
+}
+
+/* ==================== CTA Section Styles ==================== */
+
+/* CTA区域 */
+.cta-section {
+    width: 100%;
+    height: 560px;
+    position: relative;
+    background: linear-gradient(180deg, transparent 0%, #A8FA00 50%, #B0F809 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* CTA容器 */
+.cta-container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 64px;
+    box-sizing: border-box;
+}
+
+/* CTA内容 */
+.cta-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+}
+
+/* CTA标题 */
+.cta-title {
+    color: var(--text-default, #0E1401);
+    font-size: 48px;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 72px;
+    word-wrap: break-word;
+    margin: 0;
+}
+
+/* CTA按钮特殊样式 */
+.cta-section .btn-Primary {
+    padding: 14px 32px !important;
+    width: auto !important;
+    min-width: 200px;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+}
+
+/* CTA按钮hover状态 - 默认文字颜色边框，白色背景 */
+.cta-section .btn-Primary:hover {
+    background: white !important;
+    color: var(--text-default, #0E1401) !important;
+    border: 2px solid var(--text-default, #0E1401) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* CTA按钮active状态 */
+.cta-section .btn-Primary:active {
+    background: white !important;
+    color: var(--text-default, #0E1401) !important;
+    border: 2px solid var(--text-default, #0E1401) !important;
+    transform: translateY(0);
+}
+
+/* 确保CTA按钮内的图标在hover状态下颜色正确 */
+.cta-section .btn-Primary:hover img,
+.cta-section .btn-Primary:hover svg {
+    filter: brightness(0) saturate(100%) invert(5%) sepia(6%) saturate(7471%) hue-rotate(63deg) brightness(99%) contrast(97%);
+}
+
+.cta-section .btn-Primary:active img,
+.cta-section .btn-Primary:active svg {
+    filter: brightness(0) saturate(100%) invert(5%) sepia(6%) saturate(7471%) hue-rotate(63deg) brightness(99%) contrast(97%);
+}
+
+/* CTA椭圆背景 - 与hero区相反方向 */
+.cta-bg-ellipse {
+    position: absolute;
+    border-radius: 50%;
+    transform-origin: center center;
+    z-index: 1;
+    opacity: 0.4;
+    filter: blur(20px);
+}
+
+/* CTA椭圆1 - 大椭圆 */
+.cta-ellipse-1 {
+    width: 400px;
+    height: 250px;
+    right: 10%;
+    bottom: 20%;
+    background: radial-gradient(ellipse, #F3FF74, #A8FA00);
+    animation: cta-float-ellipse-1 12s ease-in-out infinite;
+}
+
+/* CTA椭圆2 - 大椭圆 */
+.cta-ellipse-2 {
+    width: 350px;
+    height: 220px;
+    left: 5%;
+    bottom: 15%;
+    background: radial-gradient(ellipse, #A8FA00, #B0F809);
+    animation: cta-float-ellipse-2 15s ease-in-out infinite;
+}
+
+/* CTA椭圆3 - 中椭圆 */
+.cta-ellipse-3 {
+    width: 300px;
+    height: 180px;
+    right: 30%;
+    bottom: 10%;
+    background: radial-gradient(ellipse, #A2EA13, #BCFF85);
+    animation: cta-float-ellipse-3 18s ease-in-out infinite;
+}
+
+/* CTA椭圆4 - 大椭圆 */
+.cta-ellipse-4 {
+    width: 450px;
+    height: 280px;
+    left: -5%;
+    bottom: 35%;
+    background: radial-gradient(ellipse, #B4FA89, #DBFF91);
+    animation: cta-float-ellipse-4 14s ease-in-out infinite;
+}
+
+/* CTA椭圆5 - 中椭圆 */
+.cta-ellipse-5 {
+    width: 250px;
+    height: 150px;
+    right: 40%;
+    bottom: 5%;
+    background: radial-gradient(ellipse, #BCFF85, #EAFFC2);
+    animation: cta-float-ellipse-5 16s ease-in-out infinite;
+}
+
+/* CTA椭圆6 - 中椭圆 */
+.cta-ellipse-6 {
+    width: 280px;
+    height: 170px;
+    left: 25%;
+    bottom: 25%;
+    background: radial-gradient(ellipse, #DBFF91, #F3FF74);
+    animation: cta-float-ellipse-6 20s ease-in-out infinite;
+}
+
+/* CTA椭圆7 - 大椭圆 */
+.cta-ellipse-7 {
+    width: 380px;
+    height: 230px;
+    right: -10%;
+    bottom: 8%;
+    background: radial-gradient(ellipse, #EAFFC2, rgba(168, 250, 0, 0.6));
+    animation: cta-float-ellipse-7 11s ease-in-out infinite;
+}
+
+/* CTA椭圆8 - 小椭圆 */
+.cta-ellipse-8 {
+    width: 120px;
+    height: 80px;
+    left: 35%;
+    bottom: 50%;
+    background: radial-gradient(ellipse, #F3FF74, rgba(243, 255, 116, 0.8));
+    animation: cta-float-ellipse-8 9s ease-in-out infinite;
+}
+
+/* CTA椭圆9 - 小椭圆 */
+.cta-ellipse-9 {
+    width: 100px;
+    height: 60px;
+    right: 35%;
+    bottom: 60%;
+    background: radial-gradient(ellipse, rgba(168, 250, 0, 0.8), rgba(162, 234, 19, 0.6));
+    animation: cta-float-ellipse-9 8s ease-in-out infinite;
+}
+
+/* CTA椭圆动画 - 从底部向上缓慢浮动，与hero区相反 */
+@keyframes cta-float-ellipse-1 {
+    0%, 100% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+    25% { transform: translate(-30px, -40px) scale(1.05) rotate(2deg); }
+    50% { transform: translate(40px, -60px) scale(0.95) rotate(-1deg); }
+    75% { transform: translate(-20px, -50px) scale(1.02) rotate(1deg); }
+}
+
+@keyframes cta-float-ellipse-2 {
+    0%, 100% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+    33% { transform: translate(50px, -45px) scale(1.08) rotate(-2deg); }
+    66% { transform: translate(-40px, -55px) scale(0.92) rotate(3deg); }
+}
+
+@keyframes cta-float-ellipse-3 {
+    0%, 100% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+    20% { transform: translate(-25px, -35px) scale(1.03) rotate(1deg); }
+    40% { transform: translate(35px, -50px) scale(0.97) rotate(-1deg); }
+    60% { transform: translate(-30px, -65px) scale(1.06) rotate(2deg); }
+    80% { transform: translate(45px, -40px) scale(0.94) rotate(-2deg); }
+}
+
+@keyframes cta-float-ellipse-4 {
+    0%, 100% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+    25% { transform: translate(60px, -50px) scale(0.96) rotate(-1deg); }
+    50% { transform: translate(-50px, -40px) scale(1.04) rotate(2deg); }
+    75% { transform: translate(40px, -60px) scale(0.98) rotate(-1deg); }
+}
+
+@keyframes cta-float-ellipse-5 {
+    0%, 100% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+    33% { transform: translate(-45px, -45px) scale(1.07) rotate(3deg); }
+    66% { transform: translate(35px, -55px) scale(0.93) rotate(-2deg); }
+}
+
+@keyframes cta-float-ellipse-6 {
+    0%, 100% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+    20% { transform: translate(40px, -30px) scale(1.05) rotate(-1deg); }
+    40% { transform: translate(-60px, -50px) scale(0.95) rotate(2deg); }
+    60% { transform: translate(30px, -40px) scale(1.02) rotate(-2deg); }
+    80% { transform: translate(-35px, -60px) scale(0.98) rotate(1deg); }
+}
+
+@keyframes cta-float-ellipse-7 {
+    0%, 100% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+    25% { transform: translate(-65px, -40px) scale(0.94) rotate(2deg); }
+    50% { transform: translate(55px, -55px) scale(1.06) rotate(-3deg); }
+    75% { transform: translate(-40px, -45px) scale(1.01) rotate(1deg); }
+}
+
+@keyframes cta-float-ellipse-8 {
+    0%, 100% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+    50% { transform: translate(-40px, -45px) scale(1.15) rotate(-2deg); }
+}
+
+@keyframes cta-float-ellipse-9 {
+    0%, 100% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+    50% { transform: translate(35px, -50px) scale(1.12) rotate(3deg); }
+}
+
+/* ==================== Footer Styles ==================== */
+
+/* Footer主容器 */
+.footer {
+    width: 100%;
+    padding: 120px 64px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #151614;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 64px;
+    box-sizing: border-box;
+}
+
+/* Footer容器 */
+.footer-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+/* Footer主要内容区域 */
+.footer-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+/* Footer Logo */
+.footer-logo {
+    flex-shrink: 0;
+}
+
+.footer-logo-img {
+    width: 267.65px;
+    height: 54px;
+    object-fit: contain;
+}
+
+/* Footer各个区域 */
+.footer-sections {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 64px;
+}
+
+/* Footer单个区域 */
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* Contact区域 */
+.footer-contact {
+    width: 201px;
+    height: 212px;
+    justify-content: space-between;
+    gap: 0;
+}
+
+.footer-address,
+.footer-contact-info {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+/* Navigation区域 */
+.footer-navigation {
+    width: 125px;
+    gap: 24px;
+}
+
+.footer-nav-links {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Help区域 */
+.footer-help {
+    gap: 30px;
+}
+
+.footer-help-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Footer文字样式 */
+.footer-section-title {
+    color: white;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 500;
+    line-height: 32px;
+    word-wrap: break-word;
+    margin: 0;
+}
+
+.footer-address-text,
+.footer-email,
+.footer-nav-link {
+    color: #EFEFEF;
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 24px;
+    word-wrap: break-word;
+    margin: 0;
+    text-decoration: none;
+}
+
+.footer-email {
+    font-family: Lexend;
+    line-height: 25.60px;
+}
+
+.footer-nav-link:hover {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+/* QR码 */
+.footer-qr-code {
+    width: 146.33px;
+    height: 145.58px;
+    object-fit: contain;
+}
+
+/* Footer分隔线 */
+.footer-divider {
+    align-self: stretch;
+    height: 0px;
+    border-bottom: 1px solid #666765;
+}
+
+/* Footer底部 */
+.footer-bottom {
+    align-self: stretch;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer-copyright p {
+    color: #F3F4F6;
+    font-size: 14px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 18.20px;
+    letter-spacing: 0.20px;
+    word-wrap: break-word;
+    margin: 0;
+}
+
+/* 社交媒体图标 */
+.footer-social {
+    width: 198px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 34px;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+    transition: fill 0.3s ease;
+}
+
+.social-icon:hover svg path {
+    fill: white;
 }
 
 
