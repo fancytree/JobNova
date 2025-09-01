@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initReviewCards();
     initFAQ();
     initCTAButton();
+    initCardsAnimation();
     
     console.log('JobNova平台初始化完成！');
 });
@@ -1518,6 +1519,239 @@ function initCTAButton() {
     // 获取DOM元素并添加到容器
     ctaButtonContainer.appendChild(ctaButtonInstance.getElement());
     console.log('CTA按钮初始化完成');
+}
+
+// ==================== 卡片动画功能 ====================
+
+/**
+ * 初始化卡片和区域动画
+ */
+function initCardsAnimation() {
+    console.log('初始化卡片和区域动画...');
+    
+    // 创建Intersection Observer for cards
+    const cardObserverOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // 添加延迟，创建错开的动画效果
+                setTimeout(() => {
+                    entry.target.classList.add('animate-in');
+                }, index * 150);
+                
+                // 一旦动画触发，就停止观察这个元素
+                cardObserver.unobserve(entry.target);
+            }
+        });
+    }, cardObserverOptions);
+    
+    // 创建Intersection Observer for sections
+    const sectionObserverOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                sectionObserver.unobserve(entry.target);
+            }
+        });
+    }, sectionObserverOptions);
+    
+    // 创建专门的Observer for step容器
+    const stepObserverOptions = {
+        threshold: 0.3,
+        rootMargin: '0px 0px -80px 0px'
+    };
+    
+    const stepObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // 为每个step添加延迟，创建错开效果
+                const stepIndex = Array.from(entry.target.parentElement.children).indexOf(entry.target);
+                setTimeout(() => {
+                    entry.target.classList.add('animate-in');
+                }, stepIndex * 200);
+                
+                stepObserver.unobserve(entry.target);
+            }
+        });
+    }, stepObserverOptions);
+    
+    // 观察Why Jobnova卡片
+    const whyJobnovaCards = document.querySelectorAll('.why-jobnova-card');
+    whyJobnovaCards.forEach(card => {
+        cardObserver.observe(card);
+    });
+    
+    // 观察Pricing卡片
+    const pricingCards = document.querySelectorAll('.pricing-card');
+    pricingCards.forEach(card => {
+        cardObserver.observe(card);
+    });
+    
+    // 观察How it works标题
+    const howItWorksTitle = document.querySelector('.how-it-works-title');
+    if (howItWorksTitle) {
+        sectionObserver.observe(howItWorksTitle);
+    }
+    
+    // 观察所有step容器
+    const stepContainers = document.querySelectorAll('.step-container');
+    stepContainers.forEach(step => {
+        stepObserver.observe(step);
+    });
+    
+    // 观察其他主要区域
+    const sectionsToAnimate = [
+        '.user-reviews', 
+        '.faq-section'
+    ];
+    
+    sectionsToAnimate.forEach(selector => {
+        const element = document.querySelector(selector);
+        if (element) {
+            sectionObserver.observe(element);
+        }
+    });
+    
+    // CTA和Footer作为整体观察
+    const ctaAndFooter = document.querySelector('.cta-section');
+    if (ctaAndFooter) {
+        // 创建特殊的Observer，当CTA进入视口时，同时触发CTA和Footer
+        const ctaFooterObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // 触发CTA
+                    entry.target.classList.add('animate-in');
+                    
+                    // 延迟触发Footer
+                    const footer = document.querySelector('.footer');
+                    if (footer) {
+                        setTimeout(() => {
+                            footer.classList.add('animate-in');
+                        }, 300);
+                    }
+                    
+                    ctaFooterObserver.unobserve(entry.target);
+                }
+            });
+        }, sectionObserverOptions);
+        
+        ctaFooterObserver.observe(ctaAndFooter);
+    }
+    
+    // 初始化连接线生长动画
+    initConnectionLineAnimation();
+    
+    console.log(`动画初始化完成：${whyJobnovaCards.length + pricingCards.length}个卡片，${stepContainers.length}个步骤，${sectionsToAnimate.length + 2}个区域`);
+}
+
+/**
+ * 初始化连接线生长动画
+ */
+function initConnectionLineAnimation() {
+    console.log('初始化连接线生长动画...');
+    
+    const connectionLine = document.querySelector('.connection-line');
+    if (!connectionLine) {
+        console.warn('未找到连接线元素');
+        return;
+    }
+    
+    const howItWorksContainer = document.querySelector('.how-it-works-container');
+    if (!howItWorksContainer) {
+        console.warn('未找到How it works容器');
+        return;
+    }
+    
+    // 创建专门的Observer来控制连接线生长
+    const connectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // 当How it works区域进入视口时，开始连接线动画
+                setTimeout(() => {
+                    connectionLine.classList.add('animate-in');
+                    
+                    // 根据滚动进度逐步显示连接线
+                    startProgressiveLineGrowth(connectionLine, howItWorksContainer);
+                }, 500); // 延迟500ms，让标题先显示
+                
+                connectionObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    connectionObserver.observe(howItWorksContainer);
+}
+
+/**
+ * 根据滚动进度控制连接线生长
+ */
+function startProgressiveLineGrowth(connectionLine, container) {
+    const updateLineProgress = () => {
+        const containerRect = container.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // 计算容器相对于视口的位置
+        const containerTop = containerRect.top;
+        const containerHeight = containerRect.height;
+        
+        // 计算滚动进度：让连接线增长更快
+        let progress = 0;
+        
+        // 添加偏移量，让连接线在滚动更多距离后才开始显示
+        const scrollOffset = windowHeight * 0.3; // 增加30%窗口高度的偏移
+        
+        if (containerTop <= windowHeight - scrollOffset) {
+            // 容器开始进入或已经在视口中（考虑偏移）
+            const scrolledDistance = (windowHeight - scrollOffset) - containerTop;
+            // 调整总滚动距离，适中的增长速度
+            const totalScrollDistance = containerHeight * 0.8 + windowHeight * 0.7;
+            let rawProgress = Math.max(0, Math.min(1, scrolledDistance / totalScrollDistance));
+            
+            // 使用更温和的缓动函数
+            progress = easeOutQuad(rawProgress);
+        }
+        
+        // 更温和的缓动函数：适中的增长速度
+        function easeOutQuad(t) {
+            return 1 - (1 - t) * (1 - t);
+        }
+        
+        // 使用clip-path控制连接线的显示进度 - 从上到下生长
+        const clipValue = Math.max(0, (1 - progress) * 100);
+        connectionLine.style.clipPath = `inset(0 0 ${clipValue}% 0)`;
+        connectionLine.style.opacity = Math.max(0.3, progress); // 最小透明度0.3
+    };
+    
+    // 监听滚动事件
+    let ticking = false;
+    const handleScroll = () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                updateLineProgress();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    // 初始计算
+    updateLineProgress();
+    
+    console.log('连接线生长动画已启动');
 }
 
 window.JobNova.reviewsData = reviewsData;

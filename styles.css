@@ -287,11 +287,23 @@ body {
     align-items: center;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     box-sizing: border-box;
+    
+    /* 初始状态 - 隐藏 */
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+/* 显示动画 */
+.why-jobnova-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .why-jobnova-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    transform: translateY(-8px) !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+    outline-color: var(--primary-color, #B0F809);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -3374,6 +3386,16 @@ main {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    
+    /* 动画初始状态 */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cta-section.animate-in {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* CTA容器 */
@@ -3619,6 +3641,16 @@ main {
     align-items: flex-start;
     gap: 64px;
     box-sizing: border-box;
+    
+    /* 动画初始状态 */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.footer.animate-in {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Footer容器 */
@@ -3811,6 +3843,123 @@ main {
 
 .social-icon:hover svg path {
     fill: white;
+}
+
+/* ==================== Section Animations ==================== */
+
+/* 通用区域动画样式 */
+.section-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section-animate.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* How it works 标题动画 */
+.how-it-works-title {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.how-it-works-title.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Step容器独立动画 */
+.step-container {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.step-container.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 连接线生长动画 - 从上到下 */
+.connection-line {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.connection-line.animate-in {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+}
+
+/* 连接线渐进显示动画 */
+.connection-line.growing {
+    clip-path: inset(0 0 0 0);
+    transition: clip-path 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* User Reviews 区域动画 */
+.user-reviews {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.user-reviews.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FAQ 区域动画 */
+.faq-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.faq-section.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+/* ==================== Pricing Cards Animation ==================== */
+
+/* Pricing卡片动画样式 */
+.pricing-card {
+    /* 初始状态 - 隐藏 */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 显示动画 */
+.pricing-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 统一的hover样式 */
+.pricing-card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Basic Plan hover */
+.pricing-card.basic-plan:hover {
+    outline-color: var(--primary-color, #B0F809);
+}
+
+/* Pro Plan hover */
+.pricing-card.pro-plan:hover {
+    box-shadow: 0 16px 48px rgba(168, 250, 0, 0.2);
 }
 
 
