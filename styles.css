@@ -402,7 +402,7 @@ body {
 .how-it-works-content {
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 120px; /* 增加步骤之间的间距 */
     width: 100%;
 }
 
@@ -411,6 +411,7 @@ body {
     align-items: center;
     gap: 80px;
     width: 100%;
+    min-height: 500px; /* 确保每个步骤容器有最小高度 */
 }
 
 .step-left {
@@ -429,7 +430,7 @@ body {
 /* 步骤文字内容样式 */
 .step-text-content {
     width: 100%;
-    height: 100%;
+    min-height: 200px; /* 确保文字内容区域有最小高度 */
     padding-right: 40px;
     display: flex;
     flex-direction: column;
@@ -524,34 +525,30 @@ body {
 }
 
 .step-container:hover .ai-match-container {
-    transform: translateY(-12px) rotateX(5deg);
+    /* 无整体位移，保持静态 */
 }
 
 .step-container:hover .ai-main-image {
-    transform: scale(1.05) rotateY(-3deg);
-    animation: float 2s ease-in-out infinite;
+    /* 无hover动效，保持静态 */
 }
 
 .step-container:hover .ai-cards-right {
-    transform: translateX(-8px) rotateY(8deg);
+    transform: rotateY(8deg);
 }
 
 .step-container:hover .ai-card {
-    transform: translateY(-6px);
     box-shadow: 45px 55px 70px rgba(32, 32, 35, 0.2);
     animation: cardPulse 2s ease-in-out infinite;
 }
 
 .step-container:hover .ai-card:nth-child(2) {
-    transform: translateY(-6px);
     box-shadow: 45px 55px 70px rgba(32, 32, 35, 0.2);
     animation: cardPulseReverse 2s ease-in-out infinite;
 }
 
 .step-container:hover .ai-card-bottom {
-    transform: translateY(-8px) rotateZ(-1deg);
     box-shadow: 38px 46px 58px rgba(32, 32, 35, 0.18);
-    animation: bottomFloat 1.8s ease-in-out infinite;
+    animation: cvUpDown 2s ease-in-out infinite;
 }
 
 /* Tracking opportunities worldwide 模块的hover动效 */
@@ -795,25 +792,25 @@ body {
 
 @keyframes cardPulse {
     0%, 100% { 
-        transform: translateY(-6px) scale(1.05) translateX(0px); 
+        transform: scale(1.05) translateX(0px); 
     }
     50% { 
-        transform: translateY(-6px) scale(0.95) translateX(-2px); 
+        transform: scale(0.95) translateX(-2px); 
     }
 }
 
 @keyframes cardPulseReverse {
     0%, 100% { 
-        transform: translateY(-6px) scale(0.95) translateX(0px); 
+        transform: scale(0.95) translateX(0px); 
     }
     50% { 
-        transform: translateY(-6px) scale(1.05) translateX(-2px); 
+        transform: scale(1.05) translateX(-2px); 
     }
 }
 
-@keyframes bottomFloat {
-    0%, 100% { transform: translateY(-8px) rotateZ(-1deg) translateX(0px); }
-    50% { transform: translateY(-8px) rotateZ(-1deg) translateX(3px); }
+@keyframes cvUpDown {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
 }
 
 .ai-main-image {
@@ -2922,6 +2919,312 @@ main {
     transition: all 0.3s ease;
 }
 
+/* Notification Visual 样式 */
+.notification-visual {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: visible;
+    min-height: 450px;
+}
 
+/* Alert 容器样式 */
+.alert-container {
+    position: relative;
+    overflow: visible;
+    border-radius: 12px;
+}
+
+.alert-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 订阅按钮样式 */
+.subscribe-section {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.subscribe-button {
+    background: #151614;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.subscribe-button:hover {
+    transform: translateY(-2px) scale(1.05); /* 添加轻微放大效果 */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    background: #1a1a1a; /* 稍微亮一点的背景色 */
+}
+
+/* Subscribe now按钮hover时激活的放大缩小动效 */
+.subscribe-button {
+    transition: all 0.3s ease;
+}
+
+.step-container:hover .subscribe-button {
+    animation: subscribePulse 2s ease-in-out infinite;
+}
+
+.subscribe-icon {
+    background: #151614;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    overflow: visible; /* 确保铃铛底部不被裁剪 */
+}
+
+
+
+.subscribe-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    background: #1a1a1a; /* 稍微亮一点的背景色 */
+}
+
+/* 通知卡片简单动效 - 参考CodePen */
+.notification-stack {
+    position: relative;
+}
+
+.notification-card {
+    transition: all 0.8s ease-in-out;
+}
+
+/* JavaScript控制动画，移除CSS动画 */
+
+/* 强制启用transition */
+.notification-card {
+    transition: all 0.8s ease-in-out !important;
+}
+
+/* Lottie铃铛动效 - 当hover整个模块时触发 */
+.step-container:hover .subscribe-icon {
+    transform: scale(1.2); /* hover时铃铛按钮整体放大 */
+    transition: transform 0.3s ease;
+}
+
+.step-container:hover .bell-bottom-circle {
+    transform: scale(1.2); /* 底部圆也跟随放大 */
+    transition: transform 0.3s ease;
+}
+
+.subscribe-icon {
+    transition: transform 0.3s ease;
+}
+
+.bell-bottom-circle {
+    transition: transform 0.3s ease;
+}
+
+/* 通知卡片弹出动画 */
+@keyframes notificationPop1 {
+    0%, 100% { 
+        transform: scale(1) translateY(0); 
+        opacity: 1;
+    }
+    25% { 
+        transform: scale(1.1) translateY(-5px); 
+        opacity: 0.8;
+    }
+    50% { 
+        transform: scale(1.05) translateY(-2px); 
+        opacity: 0.9;
+    }
+    75% { 
+        transform: scale(1.15) translateY(-8px); 
+        opacity: 0.7;
+    }
+}
+
+@keyframes notificationPop2 {
+    0%, 100% { 
+        transform: scale(1) translateY(0); 
+        opacity: 1;
+    }
+    30% { 
+        transform: scale(1.2) translateY(-8px); 
+        opacity: 0.7;
+    }
+    60% { 
+        transform: scale(1.1) translateY(-4px); 
+        opacity: 0.8;
+    }
+    90% { 
+        transform: scale(1.25) translateY(-12px); 
+        opacity: 0.6;
+    }
+}
+
+
+
+/* Subscribe now按钮脉冲动画 */
+@keyframes subscribePulse {
+    0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    25% { 
+        transform: scale(1.02); 
+        box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18);
+    }
+    50% { 
+        transform: scale(1.05); 
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+    75% { 
+        transform: scale(1.02); 
+        box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18);
+    }
+}
+
+/* 通知卡片Yuda风格动画 */
+@keyframes card1Move {
+    0% { 
+        top: 21px;
+        opacity: 1;
+    }
+    80% { 
+        top: 21px;
+        opacity: 1;
+    }
+    100% { 
+        top: 53px;
+        opacity: 0.6;
+    }
+}
+
+@keyframes card2Move {
+    0% { 
+        top: 37px;
+        opacity: 0.8;
+    }
+    80% { 
+        top: 21px;
+        opacity: 1;
+    }
+    100% { 
+        top: 37px;
+        opacity: 0.8;
+    }
+}
+
+@keyframes card3Move {
+    0% { 
+        top: 53px;
+        opacity: 0.6;
+    }
+    80% { 
+        top: 37px;
+        opacity: 0.8;
+    }
+    100% { 
+        top: 53px;
+        opacity: 0.6;
+    }
+}
+
+/* Pricing模块Get Started按钮交互样式 */
+.pricing-section .btn-get-started {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Basic Plan Get Started按钮hover效果 */
+.pricing-section .btn-get-started.basic:hover {
+    background: var(--primary-color) !important;
+    color: var(--text-default) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(168, 250, 0, 0.3);
+}
+
+.pricing-section .btn-get-started.basic:hover div {
+    color: var(--text-default) !important;
+}
+
+/* Pro Plan Get Started按钮hover效果 */
+.pricing-section .btn-get-started.pro:hover {
+    background: var(--primary-color) !important;
+    color: black !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(168, 250, 0, 0.3);
+}
+
+/* Get Started按钮Pressed状态样式 */
+.pricing-section .btn-get-started:active {
+    background: #A0DE10 !important;
+    transform: translateY(0) !important;
+    box-shadow: 0 4px 12px rgba(160, 222, 16, 0.4) !important;
+    transition: all 0.1s ease !important;
+}
+
+/* 更强的选择器确保Pressed状态生效 */
+.pricing-section .btn-get-started.basic:active,
+.pricing-section .btn-get-started.pro:active {
+    background: #A0DE10 !important;
+    transform: translateY(0) !important;
+    box-shadow: 0 4px 12px rgba(160, 222, 16, 0.4) !important;
+    transition: all 0.1s ease !important;
+}
+
+/* Basic Plan按钮Pressed状态文字颜色 */
+.pricing-section .btn-get-started.basic:active div {
+    color: var(--text-default) !important;
+}
+
+/* Pro Plan按钮Pressed状态文字颜色 */
+.pricing-section .btn-get-started.pro:active div {
+    color: black !important;
+}
+
+/* User Reviews 模块样式 - 与其他主要模块保持同级 */
+.user-reviews {
+    padding: 80px 0;
+    background: white;
+    margin-top: 80px;
+}
+
+.user-reviews-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+}
+
+.user-reviews-title {
+    font-size: 48px;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 72px;
+    color: var(--text-primary);
+    text-align: center;
+    margin: 0;
+}
+
+.user-reviews-content {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1312px;
+    padding: 0 64px;
+    box-sizing: border-box;
+}
 
 

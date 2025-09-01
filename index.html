@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="styles.css">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="Asset/favicon.ico">
-</head>
+                    <link rel="icon" type="image/x-icon" href="https://placehold.co/32x32/666/fff?text=J">
+        <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+    </head>
 <body>
     <!-- 导航栏 -->
     <nav class="navbar">
@@ -149,8 +150,11 @@
             <div class="how-it-works-container">
                 <h2 class="how-it-works-title">How it works</h2>
                 
-                <div class="how-it-works-content">
-                                                <!-- 第一个步骤：AI Finds Your Perfect Job Match -->
+                <div class="how-it-works-content" style="position: relative;">
+                    <!-- 连接三个步骤的连接线 - 作为容器背景 -->
+                    <img src="Asset/link.svg" alt="Connection Line" style="width: 600px; height: 1200px; left: 440px; top: 220px; position: absolute; z-index: 0;" />
+                    
+                    <!-- 第一个步骤：AI Finds Your Perfect Job Match -->
                             <div class="step-container">
                                 <div class="step-left">
                                     <div class="step-text-content">
@@ -162,26 +166,26 @@
                                     </div>
                                 </div>
                                 <div class="step-right">
-                                    <div class="step-visual ai-match-visual">
-                                        <!-- AI匹配的视觉元素 -->
-                                        <div class="ai-match-container">
-                                            <img class="ai-main-image" src="Asset/AI Match Visual/chat.png" alt="AI Chat" />
-                                            <div class="ai-cards-right">
-                                                <img class="ai-card" src="Asset/AI Match Visual/Data Analyst.png" alt="Data Analyst" />
-                                                <img class="ai-card" src="Asset/AI Match Visual/Product Manager.png" alt="Product Manager" />
-                                            </div>
-                                            <img class="ai-card-bottom" src="Asset/AI Match Visual/CV.png" alt="CV" />
+                                                                    <div class="step-visual ai-match-visual" style="height: 500px; display: flex; align-items: center; justify-content: center;">
+                                    <!-- AI匹配的视觉元素 -->
+                                    <div class="ai-match-container" style="position: relative; width: 100%; height: 100%;">
+                                        <img class="ai-main-image" src="Asset/AI Match Visual/chat.png" alt="AI Chat" />
+                                        <div class="ai-cards-right">
+                                            <img class="ai-card" src="Asset/AI Match Visual/Data Analyst.png" alt="Data Analyst" />
+                                            <img class="ai-card" src="Asset/AI Match Visual/Product Manager.png" alt="Product Manager" />
                                         </div>
+                                        <img class="ai-card-bottom" src="Asset/AI Match Visual/CV.png" alt="CV" />
                                     </div>
+                                </div>
                                 </div>
                             </div>
                     
                     <!-- 第二个步骤：Tracking opportunities worldwide -->
                     <div class="step-container">
                         <div class="step-left">
-                            <div class="step-visual worldwide-visual">
+                            <div class="step-visual worldwide-visual" style="height: 500px; display: flex; align-items: center; justify-content: center;">
                                 <!-- 世界地图视觉元素 -->
-                                <div class="worldwide-container">
+                                <div class="worldwide-container" style="position: relative; width: 100%; height: 100%;">
                                     <img class="worldwide-main" src="Asset/worldwide/Map.png" alt="World Map" loading="lazy" />
                                     <img class="worldwide-overlay" src="Asset/worldwide/Avatar.png" alt="Avatar" loading="lazy" />
                                     
@@ -201,7 +205,6 @@
                             <div class="apply-container" style="position: absolute; left: 274px; top: 75px; width: 313px; height: 347px; border-radius: 12px; overflow: hidden; box-shadow: 8px 16px 24px rgba(24, 24, 26, 0.04);">
                                 <img class="apply-image" src="Asset/worldwide/Apply.png" alt="Apply" style="width: 100%; height: 100%; object-fit: contain;" />
                             </div>
-
                         </div>
                         <div class="step-right">
                             <div class="step-text-content">
@@ -226,15 +229,589 @@
                             </div>
                         </div>
                         <div class="step-right">
-                            <div class="step-visual">
-                                <!-- 这里可以放置通知的视觉元素 -->
-                                <div class="notification-visual">Notification Visual</div>
+                            <div class="step-visual notification-visual" style="height: 500px; display: flex; align-items: center; justify-content: center;">
+                                <!-- 通知视觉元素 -->
+                                <div class="notification-container" style="position: relative; width: 100%; height: 100%;">
+                                    <img style="width: 88%; height: 88%; object-fit: contain;" src="Asset/Notification Visual/Instant Job Alert.png" alt="Notification Main" />
+                                    <!-- 通知卡片组 - 参考CodePen的实现方式 -->
+                                    <!-- 卡片1 - 最上层，Y轴最上方 -->
+                                    <div class="notification-card card-1" style="width: 277px; height: 71.50px; position: absolute; left: 285px; top: 21px; border-radius: 12px; overflow: hidden; box-shadow: 21px 28px 32px rgba(32, 32, 35, 0.07); z-index: 3; transition: all 0.8s ease-in-out;">
+                                        <img style="width: 100%; height: 100%; object-fit: cover" src="Asset/Notification Visual/Alert1.png" alt="Notification 1" />
+                                    </div>
+                                    <!-- 卡片2 - 第二层，Y轴中间 -->
+                                    <div class="notification-card card-2" style="width: 253px; height: 67px; position: absolute; left: 293px; top: 37px; border-radius: 12px; overflow: hidden; box-shadow: 21px 28px 32px rgba(32, 32, 35, 0.07); z-index: 2; transition: all 0.8s ease-in-out;">
+                                        <img style="width: 100%; height: 100%; object-fit: cover" src="Asset/Notification Visual/Alert2.png" alt="Notification 2" />
+                                    </div>
+                                    <!-- 卡片3 - 第三层，Y轴最下方 -->
+                                    <div class="notification-card card-3" style="width: 229px; height: 62.5px; position: absolute; left: 301px; top: 53px; border-radius: 12px; overflow: hidden; box-shadow: 21px 28px 32px rgba(32, 32, 35, 0.07); z-index: 1; transition: all 0.8s ease-in-out;">
+                                        <img style="width: 100%; height: 100%; object-fit: cover" src="Asset/Notification Visual/Alert3.png" alt="Notification 3" />
+                                    </div>
+                                    
+                                    <div class="subscribe-section" style="left: -24px; top: 390px; position: absolute; display: flex; align-items: center; gap: 20px; z-index: 3">
+                                        <div class="subscribe-button" style="width: 199px; height: 40px; padding: 12px 60px; background: #151614; border-radius: 28px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)">
+                                            <span style="color: white; font-size: 14px; font-family: Inter; font-weight: 400; line-height: 24px; white-space: nowrap;">Subscribe now</span>
+                                        </div>
+                                        <div class="subscribe-icon" style="width: 40px; height: 40px; padding: 0px; background: #151614; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); position: relative; overflow: visible;">
+                                            <!-- 铃铛动画 - 默认静止 -->
+                                            <dotlottie-wc id="bellAnimation" src="https://lottie.host/bc3280e0-2e07-4eaf-9407-70c79c950520/wsDMSSJK91.lottie" style="width: 40px; height: 40px" speed="0" autoplay="false" loop="false" direction="-1"></dotlottie-wc>
+                                        </div>
+                                        <!-- 删除多余的黑色圆 -->
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <!-- Pricing Section -->
+        <section class="pricing-section">
+            <div style="width: 100%; height: 100%; flex-direction: column; justify-content: center; align-items: center; gap: 48px; display: inline-flex">
+                <div style="align-self: stretch; text-align: center; color: var(--Text-Default, #0E1401); font-size: 48px; font-family: Inter; font-weight: 600; line-height: 72px; word-wrap: break-word">Pricing (3-days free trial)</div>
+                <div style="width: 1312px; padding-left: 64px; padding-right: 64px; justify-content: flex-start; align-items: flex-start; gap: 36px; display: inline-flex">
+                    <div style="flex: 1 1 0; height: 660px; padding-left: 32px; padding-right: 32px; padding-top: 64px; padding-bottom: 64px; background: white; border-radius: 24px; outline: 1px #D2D4D1 solid; outline-offset: -1px; flex-direction: column; justify-content: space-between; align-items: flex-start; display: inline-flex">
+                        <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 28px; display: flex">
+                            <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 6px; display: flex">
+                                <div style="align-self: stretch; color: #222222; font-size: 32px; font-family: Inter; font-weight: 600; line-height: 48px; word-wrap: break-word">Basic</div>
+                                <div style="align-self: stretch; color: #5C5C5C; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">For basic features to kickstart your job search efficiency</div>
+                            </div>
+                            <div style="width: 430px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: flex">
+                                <div style="align-self: stretch"><span style="color: black; font-size: 60px; font-family: Inter; font-weight: 600; line-height: 74px; word-wrap: break-word">$6.99</span><span style="color: black; font-size: 40px; font-family: SF Pro; font-weight: 590; word-wrap: break-word"> </span><span style="color: #666765; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">9.99/month</span></div>
+                                <div style="padding-left: 12px; padding-right: 12px; padding-top: 4px; padding-bottom: 4px; background: #A8FA00; border-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+                                    <div style="justify-content: center; display: flex; flex-direction: column; color: black; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">30% Saving</div>
+                                </div>
+                            </div>
+                            <div style="width: 344px; height: 100px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex">
+                                <div style="width: 420px; justify-content: flex-start; align-items: center; gap: 6px; display: inline-flex">
+                                    <img src="Asset/Check.svg" alt="Check" style="width: 16px; height: 16px; filter: brightness(0);" />
+                                    <div style="width: 479px; color: black; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">Daily personalized job alert emails</div>
+                                </div>
+                                <div style="justify-content: flex-start; align-items: center; gap: 6px; display: inline-flex">
+                                    <img src="Asset/Check.svg" alt="Check" style="width: 16px; height: 16px; filter: brightness(0);" />
+                                    <div style="width: 298px; color: black; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">Standard job filtering and matching</div>
+                                </div>
+                                <div style="justify-content: flex-start; align-items: center; gap: 6px; display: inline-flex">
+                                    <img src="Asset/Check.svg" alt="Check" style="width: 16px; height: 16px; filter: brightness(0);" />
+                                    <div style="width: 298px; color: black; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">Quality customer support</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-get-started basic" data-lefticon="false" data-righticon="false" data-size="L" data-state="Default" data-text="true" data-type="second" style="align-self: stretch; padding-left: 24px; padding-right: 24px; padding-top: 16px; padding-bottom: 16px; background: black; overflow: hidden; border-radius: 9999px; justify-content: center; align-items: center; gap: 12px; display: inline-flex">
+                            <div style="color: white; font-size: 16px; font-family: Inter; font-weight: 500; line-height: 24px; word-wrap: break-word">Get started</div>
+                        </div>
+                    </div>
+                    <div style="flex: 1 1 0; height: 660px; padding-left: 32px; padding-right: 32px; padding-top: 64px; padding-bottom: 64px; background: black; border-radius: 24px; flex-direction: column; justify-content: space-between; align-items: flex-start; display: inline-flex">
+                        <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 28px; display: flex">
+                            <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 6px; display: flex">
+                                <div style="align-self: stretch; color: #A8FA00; font-size: 32px; font-family: Inter; font-weight: 600; line-height: 48px; word-wrap: break-word">Pro</div>
+                                <div style="align-self: stretch; color: white; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">Unlock advanced AI capacities, maximize your job hunting success</div>
+                            </div>
+                            <div style="width: 430px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: flex">
+                                <div style="align-self: stretch"><span style="color: white; font-size: 60px; font-family: Inter; font-weight: 600; line-height: 74px; word-wrap: break-word">$15.99</span><span style="color: white; font-size: 40px; font-family: SF Pro; font-weight: 590; word-wrap: break-word"> </span><span style="color: #D2D4D1; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">25.99/monthly</span></div>
+                                <div style="padding-left: 12px; padding-right: 12px; padding-top: 4px; padding-bottom: 4px; background: #A8FA00; border-radius: 20px; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+                                    <div style="justify-content: center; display: flex; flex-direction: column; color: black; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">40% Saving</div>
+                                </div>
+                            </div>
+                            <div style="width: 344px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex">
+                                <div style="justify-content: flex-start; align-items: center; gap: 6px; display: inline-flex">
+                                    <img src="Asset/Check.svg" alt="Check" style="width: 16px; height: 16px; filter: brightness(0) invert(1);" />
+                                    <div style="width: 479px; color: white; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">Daily personalized job alert emails</div>
+                                </div>
+                                <div style="justify-content: flex-start; align-items: center; gap: 6px; display: inline-flex">
+                                    <img src="Asset/Check.svg" alt="Check" style="width: 16px; height: 16px; filter: brightness(0) invert(1);" />
+                                    <div style="width: 363.18px; color: white; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">Premium AI powered job matching with scores</div>
+                                </div>
+                                <div style="justify-content: flex-start; align-items: center; gap: 6px; display: inline-flex">
+                                    <img src="Asset/Check.svg" alt="Check" style="width: 16px; height: 16px; filter: brightness(0) invert(1);" />
+                                    <div style="width: 350.90px; color: white; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">Recommend the most relevant jobs to you 🔥</div>
+                                </div>
+                                <div style="justify-content: flex-start; align-items: center; gap: 6px; display: inline-flex">
+                                    <img src="Asset/Check.svg" alt="Check" style="width: 16px; height: 16px; filter: brightness(0) invert(1);" />
+                                    <div style="width: 330.80px; color: white; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">Early access to hidden job opportunities 🔥</div>
+                                </div>
+                                <div style="justify-content: flex-start; align-items: center; gap: 6px; display: inline-flex">
+                                    <img src="Asset/Check.svg" alt="Check" style="width: 16px; height: 16px; filter: brightness(0) invert(1);" />
+                                    <div style="width: 296.19px; color: white; font-size: 16px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">Dedicate customer support manager</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-get-started pro" data-lefticon="false" data-righticon="false" data-size="L" data-state="Default" data-text="true" data-type="second" style="align-self: stretch; padding-left: 24px; padding-right: 24px; padding-top: 16px; padding-bottom: 16px; background: white; overflow: hidden; border-radius: 9999px; justify-content: center; align-items: center; gap: 12px; display: inline-flex">
+                            <div style="color: black; font-size: 16px; font-family: Inter; font-weight: 500; line-height: 24px; word-wrap: break-word">Get started</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- User Reviews Section -->
+        <section class="user-reviews">
+            <div class="user-reviews-container">
+                <h2 class="user-reviews-title">See What Users Are Saying!</h2>
+                
+                <div class="user-reviews-content">
+                    <!-- Review Card 1 -->
+                    <div style="width: 100%; height: 100%; padding-left: 20px; padding-right: 20px; padding-top: 32px; padding-bottom: 32px; background: rgba(255, 255, 255, 0.80); box-shadow: 0px 0px 4px rgba(21, 22, 20, 0.12); border-radius: 24px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                        <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 32px; display: flex">
+                            <div style="align-self: stretch; padding: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 20px; display: flex">
+                                <div style="align-self: stretch; justify-content: space-between; align-items: center; display: inline-flex">
+                                    <div data-format="Wordmark" style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 14.95px; display: inline-flex">
+                                        <div style="width: 93.45px; height: 21px; position: relative; overflow: hidden">
+                                            <div style="width: 93.45px; height: 21px; left: 0px; top: 0px; position: absolute; background: #2D8CFF"></div>
+                                        </div>
+                                    </div>
+                                    <div style="height: 20px; justify-content: flex-start; align-items: center; gap: 9px; display: flex">
+                                        <div style="width: 16.97px; height: 16.97px; position: relative; overflow: hidden">
+                                            <div style="width: 13.58px; height: 13.58px; left: 1.70px; top: 1.70px; position: absolute; background: #A8FA00"></div>
+                                        </div>
+                                        <div style="width: 16.97px; height: 16.97px; position: relative; overflow: hidden">
+                                            <div style="width: 13.58px; height: 13.58px; left: 1.70px; top: 1.70px; position: absolute; background: #A8FA00"></div>
+                                        </div>
+                                        <div style="width: 16.97px; height: 16.97px; position: relative; overflow: hidden">
+                                            <div style="width: 13.58px; height: 13.58px; left: 1.70px; top: 1.70px; position: absolute; background: #A8FA00"></div>
+                                        </div>
+                                        <div style="width: 16.97px; height: 16.97px; position: relative; overflow: hidden">
+                                            <div style="width: 13.58px; height: 13.58px; left: 1.70px; top: 1.70px; position: absolute; background: #A8FA00"></div>
+                                        </div>
+                                        <div style="width: 16.97px; height: 16.97px; position: relative; overflow: hidden">
+                                            <div style="width: 13.58px; height: 13.58px; left: 1.70px; top: 1.70px; position: absolute; background: #A8FA00"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="align-self: stretch; color: rgba(0, 0, 0, 0.20); font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word">Found my dream internship fast.</div>
+                                <div style="width: 336px; color: rgba(0, 0, 0, 0.20); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">"As a student, timing is everything. Jobnova's real-time updates meant I applied to openings right when they went live. The global coverage helped me land a remote internship with Zoom, something I might have missed entirely without the platform."</div>
+                            </div>
+                            <div style="padding-left: 6px; padding-right: 6px; justify-content: flex-start; align-items: flex-end; gap: 12px; display: inline-flex">
+                                <img style="width: 44px; height: 44px; border-radius: 9999px" src="https://placehold.co/44x44" />
+                                <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex">
+                                    <div style="color: rgba(0, 0, 0, 0.20); font-size: 14px; font-family: Inter; font-weight: 600; word-wrap: break-word">Liam Thompson</div>
+                                    <div style="justify-content: center; display: flex; flex-direction: column; color: rgba(0, 0, 0, 0.20); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">Software Developer (Intern)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Review Card 2 -->
+                    <div style="width: 100%; height: 100%; padding-left: 20px; padding-right: 20px; padding-top: 32px; padding-bottom: 32px; background: rgba(255, 255, 255, 0.80); box-shadow: 0px 0px 4px rgba(21, 22, 20, 0.12); border-radius: 24px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                        <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 32px; display: flex">
+                            <div style="align-self: stretch; padding: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 20px; display: flex">
+                                <div style="align-self: stretch; justify-content: space-between; align-items: center; display: inline-flex">
+                                    <div data-format="Wordmark" style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 14.95px; display: inline-flex">
+                                        <div style="width: 93.45px; height: 21px; position: relative; overflow: hidden">
+                                            <div style="width: 93.45px; height: 21px; left: 0px; top: 0px; position: absolute; background: #2D8CFF"></div>
+                                        </div>
+                                    </div>
+                                    <div style="height: 20px; justify-content: flex-start; align-items: center; gap: 9px; display: flex">
+                                        <div style="width: 16.97px; height: 16.97px; position: relative; overflow: hidden">
+                                            <div style="width: 13.58px; height: 13.58px; left: 1.70px; top: 1.70px; position: absolute; background: #A8FA00"></div>
+                                        </div>
+                                        <div style="width: 16.97px; height: 16.97px; position: relative; overflow: hidden">
+                                            <div style="width: 13.58px; height: 13.58px; left: 1.70px; top: 1.70px; position: absolute; background: #A8FA00"></div>
+                                        </div>
+                                        <div style="width: 16.97px; height: 16.97px; position: relative; overflow: hidden">
+                                            <div style="width: 13.58px; height: 13.58px; left: 1.70px; top: 1.70px; position: absolute; background: #A8FA00"></div>
+                                        </div>
+                                        <div style="width: 16.97px; height: 16.97px; position: relative; overflow: hidden">
+                                            <div style="width: 13.58px; height: 13.58px; left: 1.70px; top: 1.70px; position: absolute; background: #A8FA00"></div>
+                                        </div>
+                                        <div style="width: 16.97px; height: 16.97px; position: relative; overflow: hidden">
+                                            <div style="width: 13.58px; height: 13.58px; left: 1.70px; top: 1.70px; position: absolute; background: #A8FA00"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="align-self: stretch; color: rgba(0, 0, 0, 0.20); font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word">Premium features exceeded expectations.</div>
+                                <div style="width: 336px; color: rgba(0, 0, 0, 0.20); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">"The premium features are worth every penny. I got access to hidden opportunities that weren't on other platforms. The AI matching is incredibly accurate and helped me land a role at a top tech company."</div>
+                            </div>
+                            <div style="padding-left: 6px; padding-right: 6px; justify-content: flex-start; align-items: flex-end; gap: 12px; display: inline-flex">
+                                <img style="width: 44px; height: 44px; border-radius: 9999px" src="https://placehold.co/44x44" />
+                                <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex">
+                                    <div style="color: rgba(0, 0, 0, 0.20); font-size: 14px; font-family: Inter; font-weight: 600; word-wrap: break-word">Sarah Miller</div>
+                                    <div style="justify-content: center; display: flex; flex-direction: column; color: rgba(0, 0, 0, 0.20); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">Product Manager</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Review Card 3 -->
+                    <div style="width: 100%; height: 100%; padding-left: 20px; padding-right: 20px; padding-top: 32px; padding-bottom: 32px; background: rgba(255, 255, 255, 0.80); box-shadow: 0px 0px 4px rgba(21, 22, 20, 0.12); border-radius: 24px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                        <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 32px; display: flex">
+                            <div style="align-self: stretch; padding: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 20px; display: flex">
+                                <div style="align-self: stretch; justify-content: space-between; align-items: center; display: inline-flex">
+                                    <div data-format="Wordmark" style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 14.95px; display: inline-flex">
+                                        <div style="width: 93.45px; height: 21px; position: relative; overflow: hidden">
+                                            <div style="width: 93.45px; height: 21px; left: 0px; top: 0px; position: absolute; background: #2D8CFF"></div>
+                                        </div>
+                                    </div>
+                                    <div style="height: 20px; justify-content: flex-start; align-items: center; gap: 9px; display: flex">
+                                        <div style="width: 16.97px; height: 16.97px; position: relative; overflow: hidden">
+                                            <div style="width: 13.58px; height: 13.58px; left: 1.70px; top: 1.70px; position: absolute; background: #A8FA00"></div>
+                                        </div>
+                                        <div style="width: 16.97px; height: 16.97px; position: relative; overflow: hidden">
+                                            <div style="width: 13.58px; height: 13.58px; left: 1.70px; top: 1.70px; position: absolute; background: #A8FA00"></div>
+                                        </div>
+                                        <div style="width: 16.97px; height: 16.97px; position: relative; overflow: hidden">
+                                            <div style="width: 13.58px; height: 13.58px; left: 1.70px; top: 1.70px; position: absolute; background: #A8FA00"></div>
+                                        </div>
+                                        <div style="width: 16.97px; height: 16.97px; position: relative; overflow: hidden">
+                                            <div style="width: 13.58px; height: 13.58px; left: 1.70px; top: 1.70px; position: absolute; background: #A8FA00"></div>
+                                        </div>
+                                        <div style="width: 16.97px; height: 16.97px; position: relative; overflow: hidden">
+                                            <div style="width: 13.58px; height: 13.58px; left: 1.70px; top: 1.70px; position: absolute; background: #A8FA00"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="align-self: stretch; color: rgba(0, 0, 0, 0.20); font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word">Outstanding customer support experience.</div>
+                                <div style="width: 336px; color: rgba(0, 0, 0, 0.20); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 20px; word-wrap: break-word">"Customer support is amazing! They helped me optimize my profile and I got 3 job offers within a month. The team is responsive and truly cares about user success."</div>
+                            </div>
+                            <div style="padding-left: 6px; padding-right: 6px; justify-content: flex-start; align-items: flex-end; gap: 12px; display: inline-flex">
+                                <img style="width: 44px; height: 44px; border-radius: 9999px" src="https://placehold.co/44x44" />
+                                <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex">
+                                    <div style="color: rgba(0, 0, 0, 0.20); font-size: 14px; font-family: Inter; font-weight: 600; word-wrap: break-word">Mike Johnson</div>
+                                    <div style="justify-content: center; display: flex; flex-direction: column; color: rgba(0, 0, 0, 0.20); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 24px; word-wrap: break-word">Data Scientist</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- JavaScript for notification cards animation -->
+        <script>
+            console.log('JavaScript开始加载...');
+            
+
+            
+            // 重置所有卡片到初始状态的函数
+            function resetCardsToInitialState() {
+                const card1 = document.querySelector('.notification-card.card-1');
+                const card2 = document.querySelector('.notification-card.card-2');
+                const card3 = document.querySelector('.notification-card.card-3');
+                
+                if (card1 && card2 && card3) {
+                    console.log('重置所有卡片到初始状态');
+                    
+                    // 定义初始属性
+                    const topLayerProps = {
+                        top: '21px',
+                        zIndex: '3',
+                        width: '277px',
+                        height: '71.5px',
+                        left: '285px'
+                    };
+                    
+                    const middleLayerProps = {
+                        top: '37px',
+                        zIndex: '2',
+                        width: '253px',
+                        height: '67px',
+                        left: '293px'
+                    };
+                    
+                    const bottomLayerProps = {
+                        top: '53px',
+                        zIndex: '1',
+                        width: '229px',
+                        height: '62.5px',
+                        left: '301px'
+                    };
+                    
+                    // 应用属性到元素
+                    function applyProps(element, props) {
+                        Object.keys(props).forEach(key => {
+                            element.style[key] = props[key];
+                        });
+                    }
+                    
+                    // 方法1：强制禁用所有transition
+                    card1.style.setProperty('transition', 'none', 'important');
+                    card2.style.setProperty('transition', 'none', 'important');
+                    card3.style.setProperty('transition', 'none', 'important');
+                    
+                    // 方法2：同时设置CSS属性
+                    card1.style.cssText += '; transition: none !important;';
+                    card2.style.cssText += '; transition: none !important;';
+                    card3.style.cssText += '; transition: none !important;';
+                    
+                    // 重置所有卡片
+                    applyProps(card1, topLayerProps);
+                    applyProps(card2, middleLayerProps);
+                    applyProps(card3, bottomLayerProps);
+                    
+                    // 重置透明度
+                    card1.style.opacity = '1';
+                    card2.style.opacity = '1';
+                    card3.style.opacity = '1';
+                    
+                    // 方法3：强制重绘和强制同步
+                    card1.offsetHeight;
+                    card2.offsetHeight;
+                    card3.offsetHeight;
+                    
+                    // 方法4：使用requestAnimationFrame确保在下一帧执行
+                    requestAnimationFrame(() => {
+                        // 再次确认位置
+                        applyProps(card1, topLayerProps);
+                        applyProps(card2, middleLayerProps);
+                        applyProps(card3, bottomLayerProps);
+                        
+                        // 延迟恢复transition
+                        setTimeout(() => {
+                            card1.style.removeProperty('transition');
+                            card2.style.removeProperty('transition');
+                            card3.style.removeProperty('transition');
+                        }, 100);
+                    });
+                    
+                    console.log('卡片已重置到初始状态');
+                }
+            }
+            
+            // 实现CodePen风格的消失动效动画
+            function startInfiniteAnimation() {
+                console.log('startInfiniteAnimation函数被调用');
+                
+                const card1 = document.querySelector('.notification-card.card-1');
+                const card2 = document.querySelector('.notification-card.card-2');
+                const card3 = document.querySelector('.notification-card.card-3');
+                
+                console.log('找到的卡片:', {card1, card2, card3});
+                
+                if (!card1 || !card2 || !card3) {
+                    console.error('卡片未找到，退出函数');
+                    return;
+                }
+                
+                console.log('开始CodePen风格的消失动效动画');
+                
+                // 定义每层的属性
+                const topLayerProps = {
+                    top: '21px',
+                    zIndex: '3',
+                    width: '277px',
+                    height: '71.5px',
+                    left: '285px'
+                };
+                
+                const middleLayerProps = {
+                    top: '37px',
+                    zIndex: '2',
+                    width: '253px',
+                    height: '67px',
+                    left: '293px'
+                };
+                
+                const bottomLayerProps = {
+                    top: '53px',
+                    zIndex: '1',
+                    width: '229px',
+                    height: '62.5px',
+                    left: '301px'
+                };
+                
+                // 应用属性到元素
+                function applyProps(element, props) {
+                    Object.keys(props).forEach(key => {
+                        element.style[key] = props[key];
+                    });
+                }
+                
+                // 确保初始状态正确
+                function setInitialState() {
+                    applyProps(card1, topLayerProps);
+                    applyProps(card2, middleLayerProps);
+                    applyProps(card3, bottomLayerProps);
+                    card1.style.opacity = '1';
+                    card2.style.opacity = '1';
+                    card3.style.opacity = '1';
+                }
+                
+                let step = 0;
+                
+                function animateDisappear() {
+                    step++;
+                    console.log('执行消失动效步骤:', step, '时间:', new Date().toLocaleTimeString());
+                    
+                    if (step === 1) {
+                        // 步骤1：卡片1（最顶层）向上移动并完全消失
+                        card1.style.top = '-50px';
+                        card1.style.opacity = '0';
+                        
+                        // 卡片2移动到最上层
+                        applyProps(card2, topLayerProps);
+                        
+                        // 卡片3移动到第二层
+                        applyProps(card3, middleLayerProps);
+                        
+                        // 卡片1移动到最底部位置并重新显示
+                        setTimeout(() => {
+                            applyProps(card1, bottomLayerProps);
+                            // 延迟更长时间后再显示，确保用户看不到回落过程
+                            setTimeout(() => {
+                                card1.style.opacity = '1';
+                            }, 400);
+                        }, 800);
+                        
+                    } else if (step === 2) {
+                        // 步骤2：卡片2（现在是最顶层）向上移动并完全消失
+                        card2.style.top = '-50px';
+                        card2.style.opacity = '0';
+                        
+                        // 卡片3移动到最上层
+                        applyProps(card3, topLayerProps);
+                        
+                        // 卡片1移动到第二层
+                        applyProps(card1, middleLayerProps);
+                        
+                        // 卡片2移动到最底部位置并重新显示
+                        setTimeout(() => {
+                            applyProps(card2, bottomLayerProps);
+                            // 延迟更长时间后再显示，确保用户看不到回落过程
+                            setTimeout(() => {
+                                card2.style.opacity = '1';
+                            }, 400);
+                        }, 800);
+                        
+                    } else if (step === 3) {
+                        // 步骤3：卡片3（现在是最顶层）向上移动并完全消失
+                        card3.style.top = '-50px';
+                        card3.style.opacity = '0';
+                        
+                        // 卡片1移动到最上层
+                        applyProps(card1, topLayerProps);
+                        
+                        // 卡片2移动到第二层
+                        applyProps(card2, middleLayerProps);
+                        
+                        // 卡片3移动到最底部位置并重新显示
+                        setTimeout(() => {
+                            applyProps(card3, bottomLayerProps);
+                            // 延迟更长时间后再显示，确保用户看不到回落过程
+                            setTimeout(() => {
+                                card3.style.opacity = '1';
+                            }, 400);
+                        }, 800);
+                        
+                        // 重置步骤，开始下一轮
+                        step = 0;
+                    }
+                }
+                
+                // 设置初始状态
+                setInitialState();
+                // 每2秒执行一步，返回interval ID
+                const intervalId = setInterval(animateDisappear, 2000);
+                // 立即执行第一步，减少开始延迟
+                setTimeout(() => {
+                    animateDisappear();
+                }, 100);
+                console.log('动画循环已启动，ID:', intervalId);
+                return intervalId;
+            }
+            
+            // 页面加载完成后执行
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('DOM加载完成');
+                
+                // 绑定hover事件到第三个step-container（First one to know the freshest jobs）
+                const stepContainers = document.querySelectorAll('.step-container');
+                if (stepContainers.length >= 3) {
+                    const targetContainer = stepContainers[2]; // 第三个step-container
+                    console.log('找到第三个step-container，绑定hover事件');
+                    
+                    let animationInterval;
+                    
+                    // 页面加载完成后立即停止铃铛动画
+                    setTimeout(() => {
+                        const lottieElement = targetContainer.querySelector('#bellAnimation');
+                        if (lottieElement) {
+                            // 强制停止动画
+                            if (lottieElement.pause) {
+                                lottieElement.pause();
+                            }
+                            // 设置属性确保动画停止
+                            lottieElement.setAttribute('speed', '0');
+                            lottieElement.setAttribute('autoplay', 'false');
+                            lottieElement.setAttribute('loop', 'false');
+                            console.log('铃铛动画已强制停止');
+                        }
+                    }, 1000); // 延迟1秒确保Lottie元素完全加载
+                    
+                    targetContainer.addEventListener('mouseenter', function() {
+                        console.log('鼠标进入第三个step-container，开始动画');
+                        
+                        // 重置卡片到初始状态，确保动画从正确位置开始
+                        resetCardsToInitialState();
+                        
+                        if (!animationInterval) {
+                            animationInterval = startInfiniteAnimation();
+                            console.log('动画已启动，interval ID:', animationInterval);
+                        }
+                        
+                        // 启动铃铛动画
+                        const lottieElement = targetContainer.querySelector('#bellAnimation');
+                        if (lottieElement) {
+                            // 强制启动动画
+                            lottieElement.setAttribute('speed', '1');
+                            lottieElement.setAttribute('autoplay', 'true');
+                            lottieElement.setAttribute('loop', 'true');
+                            lottieElement.setAttribute('direction', '1');
+                            // 尝试调用play方法
+                            if (lottieElement.play) {
+                                lottieElement.play();
+                            }
+                            console.log('铃铛动画已启动');
+                        }
+                    });
+                    
+                    targetContainer.addEventListener('mouseleave', function() {
+                        console.log('鼠标离开第三个step-container，停止动画');
+                        
+                        // 停止动画循环
+                        if (animationInterval) {
+                            clearInterval(animationInterval);
+                            animationInterval = null;
+                            console.log('动画已停止');
+                        }
+                        
+                        // 停止铃铛动画 - 使用最强制的方法
+                        const lottieElement = targetContainer.querySelector('#bellAnimation');
+                        if (lottieElement) {
+                            console.log('开始强制停止铃铛动画');
+                            
+                            // 直接重新创建铃铛元素，确保完全停止
+                            const subscribeIcon = targetContainer.querySelector('.subscribe-icon');
+                            if (subscribeIcon) {
+                                // 创建新的铃铛元素
+                                const newLottie = document.createElement('dotlottie-wc');
+                                newLottie.id = 'bellAnimation';
+                                newLottie.src = 'https://lottie.host/bc3280e0-2e07-4eaf-9407-70c79c950520/wsDMSSJK91.lottie';
+                                newLottie.style.width = '40px';
+                                newLottie.style.height = '40px';
+                                newLottie.setAttribute('speed', '0');
+                                newLottie.setAttribute('autoplay', 'false');
+                                newLottie.setAttribute('loop', 'false');
+                                newLottie.setAttribute('direction', '-1');
+                                
+                                // 替换旧元素
+                                subscribeIcon.innerHTML = '';
+                                subscribeIcon.appendChild(newLottie);
+                                
+                                console.log('铃铛元素已重新创建，动画已强制停止');
+                            }
+                        }
+                        
+                        // 重置所有卡片到初始状态
+                        resetCardsToInitialState();
+                    });
+                } else {
+                    console.error('step-container数量不足，需要至少3个');
+                }
+                
+            });
+            
+            console.log('JavaScript加载完成');
+        </script>
         
 
         <!-- 功能特性区域 -->
@@ -373,7 +950,7 @@
                             <p>"JobNova帮助我们节省了70%的简历筛选时间，招聘质量显著提升。"</p>
                         </div>
                         <div class="testimonial-author">
-                            <img src="Asset/avatar1.jpg" alt="张经理" class="author-avatar">
+                            <img src="https://placehold.co/50x50/666/fff?text=张" alt="张经理" class="author-avatar">
                             <div class="author-info">
                                 <h4>张经理</h4>
                                 <span>人力资源总监 - 科技公司</span>
@@ -386,7 +963,7 @@
                             <p>"AI智能匹配功能非常准确，我们找到了很多优秀的候选人。"</p>
                         </div>
                         <div class="testimonial-author">
-                            <img src="Asset/avatar2.jpg" alt="李总监" class="author-avatar">
+                            <img src="https://placehold.co/50x50/666/fff?text=李" alt="李总监" class="author-avatar">
                             <div class="author-info">
                                 <h4>李总监</h4>
                                 <span>招聘经理 - 互联网公司</span>
@@ -399,7 +976,7 @@
                             <p>"数据分析功能让我们更好地了解招聘效果，优化了招聘策略。"</p>
                         </div>
                         <div class="testimonial-author">
-                            <img src="Asset/avatar3.jpg" alt="王总" class="author-avatar">
+                            <img src="https://placehold.co/50x50/666/fff?text=王" alt="王总" class="author-avatar">
                             <div class="author-info">
                                 <h4>王总</h4>
                                 <span>CEO - 创业公司</span>
@@ -515,38 +1092,7 @@
             </div>
         </section>
 
-        <!-- 关于我们区域 -->
-        <section id="about" class="about">
-            <div class="container">
-                <div class="about-content">
-                    <div class="about-text">
-                        <h2 class="section-title">关于 JobNova</h2>
-                        <p class="about-description">
-                            JobNova成立于2020年，是一家专注于AI招聘技术的创新公司。我们的使命是通过人工智能技术，
-                            让招聘过程更智能、更高效，帮助企业找到最合适的人才，同时帮助求职者找到最理想的工作。
-                        </p>
-                        <div class="about-stats">
-                            <div class="about-stat">
-                                <span class="stat-number">50+</span>
-                                <span class="stat-label">AI专家</span>
-                            </div>
-                            <div class="about-stat">
-                                <span class="stat-number">3年+</span>
-                                <span class="stat-label">行业经验</span>
-                            </div>
-                            <div class="about-stat">
-                                <span class="stat-number">99.9%</span>
-                                <span class="stat-label">系统稳定性</span>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary">了解更多</button>
-                    </div>
-                    <div class="about-visual">
-                        <img src="Asset/about-illustration.svg" alt="关于JobNova" class="about-image">
-                    </div>
-                </div>
-            </div>
-        </section>
+
 
         <!-- 联系我们区域 -->
         <section id="contact" class="contact">

@@ -636,6 +636,54 @@ function initButtonEffects() {
             createRippleEffect(e, this);
         });
     });
+    
+    // 为Pricing模块的Get Started按钮添加波纹效果和Pressed状态
+    const getStartedButtons = document.querySelectorAll('.btn-get-started');
+    getStartedButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            createRippleEffect(e, this);
+        });
+        
+        // 添加Pressed状态支持
+        button.addEventListener('mousedown', function() {
+            this.style.background = '#A0DE10';
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 4px 12px rgba(160, 222, 16, 0.4)';
+        });
+        
+        button.addEventListener('mouseup', function() {
+            // 恢复hover状态或默认状态
+            if (this.matches(':hover')) {
+                this.style.background = 'var(--primary-color)';
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 8px 25px rgba(168, 250, 0, 0.3)';
+            } else {
+                // 恢复默认状态
+                if (this.classList.contains('basic')) {
+                    this.style.background = 'black';
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                } else if (this.classList.contains('pro')) {
+                    this.style.background = 'white';
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                }
+            }
+        });
+        
+        // 确保鼠标离开时恢复默认状态
+        button.addEventListener('mouseleave', function() {
+            if (this.classList.contains('basic')) {
+                this.style.background = 'black';
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            } else if (this.classList.contains('pro')) {
+                this.style.background = 'white';
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            }
+        });
+    });
 }
 
 /**
