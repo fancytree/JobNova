@@ -3217,10 +3217,9 @@ main {
 }
 
 .user-reviews-content {
-    display: flex;
-    gap: 32px;
-    justify-content: center;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
     width: 100%;
     max-width: 1312px;
     padding: 0 64px;
