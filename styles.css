@@ -1220,25 +1220,27 @@ body {
     background: transparent;
     color: var(--text-primary);
     border: 1px solid var(--text-primary);
-    outline: 1px solid var(--text-primary);
-    outline-offset: -1px;
+    outline: none;
     transition: all var(--transition-normal);
     overflow: hidden;
     height: 40px;
+    /* 确保边框渲染清晰 */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 .btn-Secondary:hover {
     background: var(--button-hover);
     color: var(--text-primary);
     border-color: var(--button-hover);
-    outline-color: var(--button-hover);
     transform: translateY(-2px);
 }
 
 .btn-Secondary:active {
     background: var(--button-pressed);
     border-color: var(--button-pressed);
-    outline-color: var(--button-pressed);
     transform: translateY(0);
 }
 
