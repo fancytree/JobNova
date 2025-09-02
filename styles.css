@@ -240,8 +240,26 @@ body {
 /* Body容器 */
 .body-container {
     width: 100%;
-    padding: 0 64px;
     box-sizing: border-box;
+}
+
+/* 当屏幕宽度超过1200px时，使用padding；否则内容占满宽度 */
+@media (min-width: 1201px) {
+    .body-container {
+        padding: 0 32px;
+    }
+    
+    .body-container > * {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+/* 当屏幕宽度小于等于1200px时，内容占满宽度减去padding */
+@media (max-width: 1200px) {
+    .body-container {
+        padding: 0 32px;
+    }
 }
 
 /* Why Jobnova? 部分样式 */
@@ -346,8 +364,8 @@ body {
     line-height: 48px;
     margin-bottom: 0;
     text-align: center;
-    width: 362px;
-    height: 44px;
+    width: 100%;
+    min-height: 44px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -383,7 +401,7 @@ body {
     line-height: 24px;
     color: #898B8D;
     text-align: center;
-    height: 48px;
+    min-height: 48px;
     align-self: stretch;
 }
 
@@ -435,8 +453,9 @@ body {
 .step-right {
     flex: 1;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;  /* 改为右对齐 */
     align-items: center;
+    padding-left: 40px;  /* 添加左边距，确保与视觉元素有距离 */
 }
 
 /* 步骤文字内容样式 */
@@ -444,29 +463,55 @@ body {
     width: 100%;
     min-height: 200px; /* 确保文字内容区域有最小高度 */
     padding-right: 40px;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 24px;
+    gap: 24px;  /* 使用24px间距，与用户提供的样式一致 */
+    position: relative;  /* 确保子元素的绝对定位相对于此容器 */
+}
+
+/* 当step-text-content在step-right中时的特殊样式 */
+.step-right .step-text-content {
+    padding-right: 0;  /* 移除右边距 */
+    padding-left: 0;   /* 移除左边距，由父容器控制 */
+    width: 100%;       /* 确保在容器内100%展示 */
+    max-width: 500px;  /* 与其他步骤的文字内容宽度一致 */
+    align-items: flex-start;  /* 文字内容左对齐 */
+    justify-content: flex-start;  /* 左对齐 */
 }
 
 .step-header {
-    align-self: stretch;
-    height: 54px;
     position: relative;
-    display: flex;
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    margin: 0 !important;  /* 确保没有margin影响间距 */
+    padding: 0 !important; /* 确保没有padding影响间距 */
+    border: none !important; /* 确保没有border影响间距 */
+    box-sizing: border-box !important; /* 确保盒模型一致 */
+}
+
+/* 当step-header在step-right中时的特殊样式 */
+.step-right .step-header {
+    justify-content: flex-start;  /* 在右侧容器中左对齐 */
+}
+
+/* 当step-number在step-right中时的特殊样式 */
+.step-right .step-number {
+    left: -15px;  /* 恢复与标题对应的位置 */
+    right: auto;  /* 重置right定位 */
 }
 
 .step-number {
-    width: 32px;
-    height: 32px;
-    left: -2px;
-    top: 0px;
+    width: 34px;
+    height: 34px;
+    left: -15px;
+    top: -4.50px;
     position: absolute;
     background: #A8FA00;
-    border-radius: 50%;
+    border-radius: 9999px;
     z-index: 1;
     border: none !important;
     outline: none !important;
@@ -482,17 +527,22 @@ body {
 }
 
 .step-title {
-    left: 0px;
-    top: 0px;
-    position: absolute;
     color: var(--text-default, #0E1401);
     font-size: 32px;
     font-family: Inter;
     font-weight: 600;
-    line-height: 48px;
+    line-height: 38.40px;  /* 按照用户要求的行高 */
     word-wrap: break-word;
-    margin: 0;
+    margin: 0 !important;  /* 确保没有margin影响间距 */
+    padding: 0 !important; /* 确保没有padding影响间距 */
     z-index: 2;
+    height: auto;  /* 高度自适应内容 */
+}
+
+/* 当step-title在step-right中时的特殊样式 */
+.step-right .step-title {
+    width: 100%;  /* 确保在容器内100%展示 */
+    text-align: left;  /* 文字左对齐 */
 }
 
 .step-description {
@@ -503,7 +553,16 @@ body {
     font-weight: 400;
     line-height: 24px;
     word-wrap: break-word;
-    margin: 0;
+    margin: 0 !important;  /* 确保没有margin影响间距 */
+    padding: 0 !important; /* 确保没有padding影响间距 */
+    border: none !important; /* 确保没有border影响间距 */
+    box-sizing: border-box !important; /* 确保盒模型一致 */
+}
+
+/* 当step-description在step-right中时的特殊样式 */
+.step-right .step-description {
+    width: 100%;  /* 确保在容器内100%展示 */
+    text-align: left;  /* 文字左对齐 */
 }
 
 .step-visual {
@@ -896,6 +955,35 @@ body {
     .step-right {
         width: 100%;
         padding-right: 0;
+        padding-left: 0;  /* 响应式时移除所有padding */
+    }
+    
+    .step-right {
+        justify-content: center;  /* 响应式时恢复居中对齐 */
+    }
+    
+    /* 响应式时恢复默认的文字对齐 */
+    .step-right .step-text-content {
+        align-items: flex-start;  /* 响应式时恢复左对齐 */
+        justify-content: flex-start;  /* 响应式时恢复左对齐 */
+        max-width: 100%;  /* 响应式时使用全宽 */
+    }
+    
+    .step-right .step-header {
+        justify-content: flex-start;  /* 响应式时恢复左对齐 */
+    }
+    
+    .step-right .step-number {
+        left: -15px;  /* 响应式时恢复默认位置 */
+        right: auto;  /* 重置right定位 */
+    }
+    
+    .step-right .step-title {
+        text-align: left;  /* 响应式时恢复左对齐 */
+    }
+    
+    .step-right .step-description {
+        text-align: left;  /* 响应式时恢复左对齐 */
     }
     
     .how-it-works-title {
@@ -903,13 +991,24 @@ body {
         line-height: 54px;
     }
     
+    .step-number {
+        width: 30px;
+        height: 30px;
+        left: -13px;
+        top: -4px;
+    }
+    
     .step-title {
         font-size: 28px;
-        line-height: 42px;
+        line-height: 33.60px;  /* 保持1.2的行高比例 */
     }
 }
 
 @media (max-width: 768px) {
+    .body-container {
+        padding: 0 24px;
+    }
+    
     .why-jobnova {
         padding: 60px 0;
     }
@@ -926,7 +1025,6 @@ body {
     
     .why-jobnova-card {
         width: 100%;
-        max-width: 400px;
         height: auto;
         min-height: 350px;
         padding: 48px 20px;
@@ -950,9 +1048,16 @@ body {
         line-height: 48px;
     }
     
+    .step-number {
+        width: 28px;
+        height: 28px;
+        left: -12px;
+        top: -3.5px;
+    }
+    
     .step-title {
         font-size: 24px;
-        line-height: 36px;
+        line-height: 28.80px;  /* 保持1.2的行高比例 */
     }
 }
 
@@ -2712,6 +2817,10 @@ main {
 }
 
 @media (max-width: 480px) {
+    .body-container {
+        padding: 0 16px;
+    }
+    
     .container {
         padding: 0 var(--spacing-sm);
     }
@@ -3116,7 +3225,6 @@ main {
     gap: 24px; /* 列间距 */
     width: 100%;
     max-width: 1312px;
-    padding: 0 64px;
     box-sizing: border-box;
     height: 100vh; /* 一屏幕高度 */
     overflow: hidden; /* 隐藏溢出内容 */
@@ -3232,7 +3340,6 @@ main {
 .faq-container {
     width: 100%;
     max-width: 1012px;
-    padding: 0 120px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -3276,6 +3383,16 @@ main {
     justify-content: flex-start;
     align-items: flex-start;
     transition: border-bottom-color 0.3s ease;
+    /* 添加动画初始状态 */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* FAQ项目 - 动画进入状态 */
+.faq-item.animate-in {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .faq-item::after {

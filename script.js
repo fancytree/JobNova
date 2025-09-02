@@ -991,8 +991,9 @@ function initNavigationButtons() {
  * 全局错误处理
  */
 window.addEventListener('error', function(e) {
-    console.error('页面错误:', e.error);
-    showNotification('页面出现错误，请刷新重试', 'error');
+    console.error('页面错误:', e.error || e.message || '未知错误');
+    // 暂时注释掉showNotification，因为该函数可能未定义
+    // showNotification('页面出现错误，请刷新重试', 'error');
 });
 
 /**
@@ -1000,7 +1001,8 @@ window.addEventListener('error', function(e) {
  */
 window.addEventListener('unhandledrejection', function(e) {
     console.error('未处理的Promise拒绝:', e.reason);
-    showNotification('操作失败，请重试', 'error');
+    // 暂时注释掉showNotification，因为该函数可能未定义
+    // showNotification('操作失败，请重试', 'error');
 });
 
 // ==================== 工具函数 ====================
@@ -1524,133 +1526,191 @@ function initCTAButton() {
 // ==================== 卡片动画功能 ====================
 
 /**
- * 初始化卡片和区域动画
+ * 初始化页面滚动动画序列
+ * 页面滚动动画顺序：
+ * 1. Hero区域 - 无动画（已有）
+ * 2. Why Jobnova卡片 - 150ms错开
+ * 3. How it works标题 - 独立显示
+ * 4. How it works步骤 - 每个step独立触发，150ms错开
+ * 5. Pricing卡片 - 150ms错开  
+ * 6. User Reviews - 整体显示
+ * 7. FAQ - 每个item 100ms 错开显示
+ * 8. CTA + Footer - 作为一个整体显示
  */
 function initCardsAnimation() {
-    console.log('初始化卡片和区域动画...');
+    console.log('初始化页面滚动动画序列...');
     
-    // 创建Intersection Observer for cards
-    const cardObserverOptions = {
-        threshold: 0.2,
+    // 通用Observer配置
+    const observerOptions = {
+        threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
     
-    const cardObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                // 添加延迟，创建错开的动画效果
-                setTimeout(() => {
-                    entry.target.classList.add('animate-in');
-                }, index * 150);
-                
-                // 一旦动画触发，就停止观察这个元素
-                cardObserver.unobserve(entry.target);
-            }
-        });
-    }, cardObserverOptions);
+    // 1. Hero区域 - 无动画（已有）
     
-    // 创建Intersection Observer for sections
-    const sectionObserverOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -100px 0px'
-    };
-    
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                sectionObserver.unobserve(entry.target);
-            }
-        });
-    }, sectionObserverOptions);
-    
-    // 创建专门的Observer for step容器
-    const stepObserverOptions = {
-        threshold: 0.3,
-        rootMargin: '0px 0px -80px 0px'
-    };
-    
-    const stepObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                // 为每个step添加延迟，创建错开效果
-                const stepIndex = Array.from(entry.target.parentElement.children).indexOf(entry.target);
-                setTimeout(() => {
-                    entry.target.classList.add('animate-in');
-                }, stepIndex * 200);
-                
-                stepObserver.unobserve(entry.target);
-            }
-        });
-    }, stepObserverOptions);
-    
-    // 观察Why Jobnova卡片
+    // 2. Why Jobnova卡片 - 150ms错开
     const whyJobnovaCards = document.querySelectorAll('.why-jobnova-card');
-    whyJobnovaCards.forEach(card => {
-        cardObserver.observe(card);
-    });
-    
-    // 观察Pricing卡片
-    const pricingCards = document.querySelectorAll('.pricing-card');
-    pricingCards.forEach(card => {
-        cardObserver.observe(card);
-    });
-    
-    // 观察How it works标题
-    const howItWorksTitle = document.querySelector('.how-it-works-title');
-    if (howItWorksTitle) {
-        sectionObserver.observe(howItWorksTitle);
+    if (whyJobnovaCards.length > 0) {
+        const whyJobnovaObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // 获取所有Why Jobnova卡片并按顺序添加动画
+                    whyJobnovaCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animate-in');
+                        }, index * 150);
+                    });
+                    whyJobnovaObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        whyJobnovaObserver.observe(whyJobnovaCards[0]);
     }
     
-    // 观察所有step容器
+    // 3. How it works标题 - 独立显示
+    const howItWorksTitle = document.querySelector('.how-it-works-title');
+    if (howItWorksTitle) {
+        const titleObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    titleObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        titleObserver.observe(howItWorksTitle);
+    }
+    
+    // 4. How it works步骤 - 每个step独立触发，300ms错开
     const stepContainers = document.querySelectorAll('.step-container');
-    stepContainers.forEach(step => {
-        stepObserver.observe(step);
-    });
+    if (stepContainers.length > 0) {
+        console.log(`找到 ${stepContainers.length} 个step容器`);
+        
+        const stepObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    console.log('How it works步骤开始错开动画');
+                    // 当第一个step进入视口时，触发所有step的错开动画
+                    stepContainers.forEach((stepEl, stepIndex) => {
+                        setTimeout(() => {
+                            console.log(`Step ${stepIndex + 1} 开始动画 (延迟 ${stepIndex * 300}ms)`);
+                            stepEl.classList.add('animate-in');
+                        }, stepIndex * 300); // 从150ms增加到300ms，更明显的错开效果
+                    });
+                    stepObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        // 只观察第一个step
+        stepObserver.observe(stepContainers[0]);
+        
+        // 添加备用触发机制：检查第一个step是否已经在视口中
+        setTimeout(() => {
+            const firstStepRect = stepContainers[0].getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // 如果第一个step已经在视口中且还没有动画，直接触发
+            if (firstStepRect.top < windowHeight && firstStepRect.bottom > 0 && !stepContainers[0].classList.contains('animate-in')) {
+                console.log('第一个step已在视口中，直接触发错开动画');
+                stepContainers.forEach((stepEl, stepIndex) => {
+                    setTimeout(() => {
+                        console.log(`Step ${stepIndex + 1} 备用触发动画 (延迟 ${stepIndex * 300}ms)`);
+                        stepEl.classList.add('animate-in');
+                    }, stepIndex * 300);
+                });
+            }
+        }, 1000); // 1秒后检查
+        
+        console.log('How it works步骤动画观察器已设置');
+    }
     
-    // 观察其他主要区域
-    const sectionsToAnimate = [
-        '.user-reviews', 
-        '.faq-section'
-    ];
+    // 5. Pricing卡片 - 150ms错开
+    const pricingCards = document.querySelectorAll('.pricing-card');
+    if (pricingCards.length > 0) {
+        const pricingObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // 获取所有Pricing卡片并按顺序添加动画
+                    pricingCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animate-in');
+                        }, index * 150);
+                    });
+                    pricingObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        pricingObserver.observe(pricingCards[0]);
+    }
     
-    sectionsToAnimate.forEach(selector => {
-        const element = document.querySelector(selector);
-        if (element) {
-            sectionObserver.observe(element);
-        }
-    });
+    // 6. User Reviews - 整体显示
+    const userReviews = document.querySelector('.user-reviews');
+    if (userReviews) {
+        const reviewsObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    reviewsObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        reviewsObserver.observe(userReviews);
+    }
     
-    // CTA和Footer作为整体观察
-    const ctaAndFooter = document.querySelector('.cta-section');
-    if (ctaAndFooter) {
-        // 创建特殊的Observer，当CTA进入视口时，同时触发CTA和Footer
+    // 7. FAQ - 区域整体显示，然后每个item 100ms 错开显示
+    const faqSection = document.querySelector('.faq-section');
+    const faqItems = document.querySelectorAll('.faq-item'); // 提前定义faqItems变量
+    if (faqSection) {
+        const faqObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // 先显示FAQ区域
+                    entry.target.classList.add('animate-in');
+                    
+                    // 延迟后让FAQ项目错开显示
+                    setTimeout(() => {
+                        const currentFaqItems = document.querySelectorAll('.faq-item'); // 动态获取最新的FAQ项目
+                        currentFaqItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('animate-in');
+                            }, index * 100);
+                        });
+                    }, 300); // 等待FAQ区域动画完成后再开始项目动画
+                    
+                    faqObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        faqObserver.observe(faqSection);
+    }
+    
+    // 8. CTA + Footer - 作为一个整体显示
+    const ctaSection = document.querySelector('.cta-section');
+    const footer = document.querySelector('.footer');
+    if (ctaSection && footer) {
         const ctaFooterObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    // 触发CTA
-                    entry.target.classList.add('animate-in');
-                    
-                    // 延迟触发Footer
-                    const footer = document.querySelector('.footer');
-                    if (footer) {
-                        setTimeout(() => {
-                            footer.classList.add('animate-in');
-                        }, 300);
-                    }
-                    
+                    // 同时触发CTA和Footer的动画
+                    ctaSection.classList.add('animate-in');
+                    footer.classList.add('animate-in');
                     ctaFooterObserver.unobserve(entry.target);
                 }
             });
-        }, sectionObserverOptions);
-        
-        ctaFooterObserver.observe(ctaAndFooter);
+        }, observerOptions);
+        ctaFooterObserver.observe(ctaSection);
     }
     
     // 初始化连接线生长动画
     initConnectionLineAnimation();
     
-    console.log(`动画初始化完成：${whyJobnovaCards.length + pricingCards.length}个卡片，${stepContainers.length}个步骤，${sectionsToAnimate.length + 2}个区域`);
+    console.log(`页面滚动动画序列初始化完成：
+    - Why Jobnova: ${whyJobnovaCards.length}个卡片 (150ms错开)
+    - How it works: 1个标题 + ${stepContainers.length}个步骤 (300ms错开)
+    - Pricing: ${pricingCards.length}个卡片 (150ms错开)
+    - User Reviews: 整体显示
+    - FAQ: ${faqItems.length}个项目 (100ms错开)
+    - CTA + Footer: 整体显示`);
 }
 
 /**
