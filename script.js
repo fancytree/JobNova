@@ -72,6 +72,7 @@ function initNavigation() {
     
     // 导航链接高亮
     window.addEventListener('scroll', function() {
+        scrollPosition = window.pageYOffset;
         updateNavigationHighlight();
     });
 }
@@ -117,16 +118,27 @@ function initSmoothScrolling() {
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
             
+            console.log('导航点击:', targetId, '目标元素:', targetSection);
+            
             if (targetSection) {
                 const offsetTop = targetSection.offsetTop - 80; // 考虑固定导航栏高度
+                
+                console.log('滚动到位置:', offsetTop);
                 
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
                 });
+                
+                // 更新当前section
+                currentSection = targetId.substring(1);
+            } else {
+                console.warn('未找到目标元素:', targetId);
             }
         });
     });
+    
+    console.log('平滑滚动初始化完成，找到', navLinks.length, '个导航链接');
 }
 
 // ==================== 表单处理 ====================

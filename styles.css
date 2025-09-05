@@ -1545,6 +1545,14 @@ body {
     width: 100%;
 }
 
+.nav-link.active {
+    color: var(--nav-hover);
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
 /* Affiliate Section */
 .nav-affiliate {
     display: flex;

@@ -1,0 +1,395 @@
+/* AI Employee 页面专用样式 */
+
+/* Hero区域 */
+.ai-employee-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.ai-employee-hero-container {
+    position: relative;
+    z-index: 100;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 32px;
+    margin: 0 auto;
+}
+
+.ai-employee-hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.ai-employee-hero-title {
+    font-size: 64px;
+    font-family: Inter;
+    font-weight: 700;
+    line-height: 78px;
+    color: var(--text-primary);
+    margin: 0 0 24px 0;
+    background: linear-gradient(135deg, #0E1401 0%, #2D8CFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ai-employee-hero-subtitle {
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 32px;
+    color: #64748B;
+    margin: 0 0 48px 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ai-employee-hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.ai-employee-hero-buttons .btn {
+    width: fit-content !important;
+    min-width: auto !important;
+}
+
+/* AI Employees 展示区域 */
+.ai-employees-section {
+    padding: 120px 0;
+    background: white;
+}
+
+.ai-employees-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.ai-employees-title {
+    font-size: 48px;
+    font-family: Inter;
+    font-weight: 700;
+    line-height: 72px;
+    color: var(--text-primary);
+    margin: 0 0 24px 0;
+}
+
+.ai-employees-subtitle {
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 32px;
+    color: #64748B;
+    margin: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* AI员工卡片网格 */
+.ai-employees-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* AI员工卡片 */
+.ai-employee-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #E2E8F0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.ai-employee-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-color);
+}
+
+.ai-employee-card.featured {
+    border: 2px solid var(--primary-color);
+    transform: scale(1.02);
+}
+
+.ai-employee-card.featured:hover {
+    transform: scale(1.02) translateY(-4px);
+}
+
+/* 员工姓名 */
+.ai-employee-name {
+    margin-bottom: 8px;
+}
+
+.ai-employee-name h3 {
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
+}
+
+.ai-employee-role {
+    font-size: 14px;
+    font-family: Inter;
+    font-weight: 400;
+    color: #64748B;
+    margin: 0;
+}
+
+/* 头像 */
+.ai-employee-avatar {
+    width: 240px;
+    height: 240px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px 0 24px 0;
+    position: relative;
+}
+
+.ai-employee-avatar img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.15));
+}
+
+/* 技能标题 */
+.ai-employee-skills-title {
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 16px 0;
+    text-align: left;
+    width: 100%;
+}
+
+/* 技能列表 */
+.ai-employee-skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0 0 16px 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
+
+.ai-employee-skill {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: Inter;
+    font-weight: 500;
+    color: #475569;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    text-align: left;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.ai-employee-skill:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateX(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ai-employee-more-skills {
+    font-size: 13px;
+    font-family: Inter;
+    font-style: italic;
+    color: #94A3B8;
+    margin: 0;
+    text-align: center;
+}
+
+/* 特色卡片样式 */
+.ai-employee-card.featured .ai-employee-name h3 {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* 自定义卡片特殊样式 */
+.ai-employee-card[data-employee-id="custom"] {
+    background: white;
+    border: 2px solid #3B82F6;
+}
+
+.ai-employee-card[data-employee-id="custom"] .ai-employee-name h3 {
+    color: #3B82F6;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.ai-employee-card[data-employee-id="custom"] .ai-employee-role {
+    color: #64748B;
+    font-size: 16px;
+}
+
+.ai-employee-card[data-employee-id="custom"] .ai-employee-skills-title {
+    color: #3B82F6;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.ai-employee-card[data-employee-id="custom"] .ai-employee-skill {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-family: Inter;
+    font-weight: 400;
+    color: #475569;
+    text-align: left;
+    line-height: 1.5;
+    box-shadow: none;
+    cursor: default;
+}
+
+.ai-employee-card[data-employee-id="custom"] .ai-employee-skill:hover {
+    background: #F8FAFC;
+    color: #475569;
+    border-color: #E2E8F0;
+    transform: none;
+    box-shadow: none;
+}
+
+.ai-employee-card[data-employee-id="custom"] .ai-employee-more-skills {
+    display: none;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .ai-employee-hero-title {
+        font-size: 48px;
+        line-height: 60px;
+    }
+    
+    .ai-employee-hero-subtitle {
+        font-size: 18px;
+        line-height: 28px;
+    }
+    
+    .ai-employees-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+    }
+    
+    .ai-employee-avatar {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .ai-employee-avatar img {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ai-employee-hero {
+        padding-top: 100px;
+        min-height: 80vh;
+    }
+    
+    .ai-employee-hero-title {
+        font-size: 36px;
+        line-height: 48px;
+    }
+    
+    .ai-employee-hero-subtitle {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    
+    .ai-employee-hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .ai-employees-section {
+        padding: 80px 0;
+    }
+    
+    .ai-employees-title {
+        font-size: 36px;
+        line-height: 48px;
+    }
+    
+    .ai-employees-subtitle {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    
+    .ai-employees-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .ai-employee-avatar {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .ai-employee-avatar img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .ai-employee-content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ai-employee-hero-container {
+        padding: 0 16px;
+    }
+    
+    .ai-employee-hero-title {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    
+    .ai-employees-title {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    
+    .ai-employee-name h3 {
+        font-size: 20px;
+    }
+    
+    .ai-employee-role {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,42 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 机器人身体 -->
+  <rect x="30" y="60" width="60" height="40" rx="8" fill="#F3F4F6" stroke="#3B82F6" stroke-width="2"/>
+  
+  <!-- 机器人头部 -->
+  <rect x="35" y="30" width="50" height="35" rx="6" fill="#F3F4F6" stroke="#3B82F6" stroke-width="2"/>
+  
+  <!-- 眼睛 -->
+  <circle cx="45" cy="45" r="4" fill="#3B82F6"/>
+  <circle cx="75" cy="45" r="4" fill="#3B82F6"/>
+  
+  <!-- 眼睛高光 -->
+  <circle cx="46" cy="44" r="1" fill="white"/>
+  <circle cx="76" cy="44" r="1" fill="white"/>
+  
+  <!-- 嘴巴 -->
+  <rect x="55" y="52" width="10" height="3" rx="1" fill="#3B82F6"/>
+  
+  <!-- 天线 -->
+  <line x1="60" y1="30" x2="60" y2="20" stroke="#3B82F6" stroke-width="2"/>
+  <circle cx="60" cy="18" r="2" fill="#3B82F6"/>
+  
+  <!-- 手臂 -->
+  <rect x="20" y="65" width="12" height="20" rx="6" fill="#F3F4F6" stroke="#3B82F6" stroke-width="2"/>
+  <rect x="88" y="65" width="12" height="20" rx="6" fill="#F3F4F6" stroke="#3B82F6" stroke-width="2"/>
+  
+  <!-- 手部 - 竖起大拇指 -->
+  <circle cx="26" cy="85" r="4" fill="#3B82F6"/>
+  <rect x="88" y="80" width="8" height="12" rx="4" fill="#3B82F6"/>
+  <rect x="90" y="75" width="4" height="8" rx="2" fill="#3B82F6"/>
+  
+  <!-- 腿部 -->
+  <rect x="40" y="100" width="15" height="15" rx="3" fill="#F3F4F6" stroke="#3B82F6" stroke-width="2"/>
+  <rect x="65" y="100" width="15" height="15" rx="3" fill="#F3F4F6" stroke="#3B82F6" stroke-width="2"/>
+  
+  <!-- 屏幕显示 - 销售数据 -->
+  <rect x="40" y="35" width="40" height="15" rx="2" fill="#3B82F6" opacity="0.3"/>
+  <path d="M 45 40 L 50 45 L 55 42 L 60 48 L 65 44 L 70 47 L 75 43" stroke="white" stroke-width="1" fill="none"/>
+  
+  <!-- 阴影 -->
+  <ellipse cx="60" cy="115" rx="25" ry="5" fill="#000000" opacity="0.1"/>
+</svg>

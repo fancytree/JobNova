@@ -1,0 +1,45 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 机器人身体 -->
+  <rect x="30" y="60" width="60" height="40" rx="8" fill="#F3F4F6" stroke="#F59E0B" stroke-width="2"/>
+  
+  <!-- 机器人头部 -->
+  <rect x="35" y="30" width="50" height="35" rx="6" fill="#F3F4F6" stroke="#F59E0B" stroke-width="2"/>
+  
+  <!-- 眼睛 -->
+  <circle cx="45" cy="45" r="4" fill="#F59E0B"/>
+  <circle cx="75" cy="45" r="4" fill="#F59E0B"/>
+  
+  <!-- 眼睛高光 -->
+  <circle cx="46" cy="44" r="1" fill="white"/>
+  <circle cx="76" cy="44" r="1" fill="white"/>
+  
+  <!-- 嘴巴 -->
+  <rect x="55" y="52" width="10" height="3" rx="1" fill="#F59E0B"/>
+  
+  <!-- 创意装饰 -->
+  <path d="M 30 25 Q 35 20 40 25 Q 45 20 50 25 Q 55 20 60 25 Q 65 20 70 25 Q 75 20 80 25 Q 85 20 90 25" stroke="#F59E0B" stroke-width="3" fill="none"/>
+  
+  <!-- 天线 -->
+  <line x1="60" y1="30" x2="60" y2="20" stroke="#F59E0B" stroke-width="2"/>
+  <circle cx="60" cy="18" r="2" fill="#F59E0B"/>
+  
+  <!-- 手臂 -->
+  <rect x="20" y="65" width="12" height="20" rx="6" fill="#F3F4F6" stroke="#F59E0B" stroke-width="2"/>
+  <rect x="88" y="65" width="12" height="20" rx="6" fill="#F3F4F6" stroke="#F59E0B" stroke-width="2"/>
+  
+  <!-- 手部 - 画笔 -->
+  <circle cx="26" cy="85" r="4" fill="#F59E0B"/>
+  <path d="M 88 80 L 95 75" stroke="#F59E0B" stroke-width="3"/>
+  <circle cx="95" cy="75" r="2" fill="#F59E0B"/>
+  
+  <!-- 腿部 -->
+  <rect x="40" y="100" width="15" height="15" rx="3" fill="#F3F4F6" stroke="#F59E0B" stroke-width="2"/>
+  <rect x="65" y="100" width="15" height="15" rx="3" fill="#F3F4F6" stroke="#F59E0B" stroke-width="2"/>
+  
+  <!-- 屏幕显示 - 创意内容 -->
+  <rect x="40" y="35" width="40" height="15" rx="2" fill="#F59E0B" opacity="0.3"/>
+  <path d="M 45 40 L 50 45 L 55 40 L 60 45 L 65 40 L 70 45 L 75 40" stroke="white" stroke-width="1" fill="none"/>
+  
+  <!-- 阴影 -->
+  <ellipse cx="60" cy="115" rx="25" ry="5" fill="#000000" opacity="0.1"/>
+</svg>
