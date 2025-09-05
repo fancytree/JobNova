@@ -1799,22 +1799,63 @@ main {
 .floating-card {
     position: absolute;
     background: white;
-    padding: var(--spacing-sm);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    font-size: var(--font-size-sm);
-    color: var(--text-secondary);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 32px 40px 48px rgba(32, 32, 35, 0.12);
     animation: float 3s ease-in-out infinite;
     border: 2px solid var(--primary-color);
     z-index: 200;
+    width: fit-content;
+    max-width: 320px;
 }
 
-.floating-card i {
-    color: var(--primary-color);
-    font-size: var(--font-size-lg);
+.floating-card-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.company-logo {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #F3F4F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.company-logo .logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.job-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.job-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+    line-height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.job-time {
+    font-size: 12px;
+    color: #6B7280;
+    line-height: 16px;
 }
 
 .card-1 {
@@ -1833,6 +1874,88 @@ main {
     bottom: 20%;
     left: 60px;
     animation-delay: 2s;
+}
+
+/* 响应式设计 - 浮动卡片 */
+@media (max-width: 1024px) {
+    .floating-card {
+        width: fit-content;
+        max-width: 280px;
+        padding: 12px;
+    }
+    
+    .company-logo {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .job-title {
+        font-size: 13px;
+    }
+    
+    .job-time {
+        font-size: 11px;
+    }
+    
+    .card-1 {
+        left: 40px;
+    }
+    
+    .card-2 {
+        right: 40px;
+    }
+    
+    .card-3 {
+        left: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .floating-card {
+        width: fit-content;
+        max-width: 240px;
+        padding: 10px;
+    }
+    
+    .floating-card-content {
+        gap: 8px;
+    }
+    
+    .company-logo {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .job-title {
+        font-size: 12px;
+        line-height: 18px;
+    }
+    
+    .job-time {
+        font-size: 10px;
+        line-height: 14px;
+    }
+    
+    .card-1 {
+        top: 15%;
+        left: 20px;
+    }
+    
+    .card-2 {
+        top: 45%;
+        right: 20px;
+    }
+    
+    .card-3 {
+        bottom: 15%;
+        left: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-card {
+        display: none;
+    }
 }
 
 /* 区域标题 */
