@@ -3,11 +3,11 @@
 /* Hero区域 */
 .ai-employee-hero {
     position: relative;
-    min-height: 100vh;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    background: transparent;
     overflow: hidden;
     padding-top: 80px;
 }
@@ -34,10 +34,6 @@
     line-height: 78px;
     color: var(--text-primary);
     margin: 0 0 24px 0;
-    background: linear-gradient(135deg, #0E1401 0%, #2D8CFF 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .ai-employee-hero-subtitle {
@@ -240,11 +236,11 @@
 /* 自定义卡片特殊样式 */
 .ai-employee-card[data-employee-id="custom"] {
     background: white;
-    border: 2px solid #3B82F6;
+    border: 1px solid #E2E8F0;
 }
 
 .ai-employee-card[data-employee-id="custom"] .ai-employee-name h3 {
-    color: #3B82F6;
+    color: var(--text-primary);
     font-size: 24px;
     font-weight: 700;
 }
@@ -255,7 +251,7 @@
 }
 
 .ai-employee-card[data-employee-id="custom"] .ai-employee-skills-title {
-    color: #3B82F6;
+    color: var(--text-primary);
     font-size: 18px;
     font-weight: 700;
 }

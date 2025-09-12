@@ -105,11 +105,9 @@ const aiEmployeesData = [
         name: 'Build your own',
         role: 'Your own custom AI Employee',
         avatar: 'Asset/AI Employee Avatars/custom-avatar.svg',
-        color: '#3B82F6',
+        color: '#64748B',
         skills: [
-            'Use words to describe what your AI Employee does',
-            'Motion\'s team can custom-create AI Employees',
-            'For your special needs!'
+            'Use words to describe what your AI Employee does. Motion\'s team can custom-create AI Employees for your special needs!'
         ],
         featured: false,
         custom: true
@@ -125,9 +123,35 @@ document.addEventListener('DOMContentLoaded', function() {
     initAIEmployeeButtons();
     initNavigation();
     initSmoothScrolling();
+    initFooterAnimation();
     
     console.log('AI Employee页面初始化完成！');
 });
+
+/**
+ * 初始化Footer动画
+ */
+function initFooterAnimation() {
+    const footer = document.querySelector('.footer');
+    if (!footer) return;
+    
+    // 使用Intersection Observer来触发footer动画
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const footerObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                footer.classList.add('animate-in');
+                footerObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    footerObserver.observe(footer);
+}
 
 /**
  * 初始化AI员工卡片
